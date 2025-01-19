@@ -4,6 +4,30 @@ Wagtail Website for ResDigita.com
 
 https://github.com/resdigi/wagtail.resdigita.com
 
+The app name is wagtailresdigitacom. 
+
+## Makefile
+
+Using gnumake from the command-line :
+
+```
+make venv
+make pip
+make init
+```
+
+and after initial data loaded :
+
+`make start`
+
+## Admin site
+
+<http://localhost:8000/admin>
+
+    - Username: admin
+    - Password: password
+
+
 ## Wagtail Starter Kit - Django Project Template
 
 This Django project template is designed for creating Wagtail builds quickly, intended for developers to bootstrap their Wagtail site development using `wagtail start --template=`. The template comes with pre-defined pages, blocks, functionalities, and fixtures to streamline the initial setup process.
