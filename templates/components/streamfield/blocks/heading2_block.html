@@ -1,0 +1,14 @@
+
+{% load util_tags %}
+<h2 
+    class="font-serif4 text-3xl md:text-5xl font-semibold 
+    {% if large_spacing %}
+        mb-10 md:mb-20
+    {% else %}
+        mb-8 md:mb-10
+    {% endif %}
+    "
+    >
+    {{ value }}
+</h2>
+
