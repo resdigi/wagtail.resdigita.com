@@ -1,9 +1,0 @@
-
-{% load wagtailcore_tags %}
-
-{% include "components/streamfield/blocks/heading2_block.html" with value=value.heading %}
-
-{% for block in value.content %}
-    {% include_block block %}
-{% endfor %}
-
