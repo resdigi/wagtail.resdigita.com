@@ -14,7 +14,8 @@ The app name is `wagtailresdigitacom`.
 | Localhost | <http://localhost:8000> |
 | Qualification Admin | <https://wagtail.resdigita.com/admin> |
 | Localhost | <http://localhost:8000/admin> |
-
+| Qualification News Admin | <https://wagtail.resdigita.com> |
+| Qualification News | <https://wagtail.resdigita.com/admin> |
 
 | Username | Password |
 | ---  | --- |
