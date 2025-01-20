@@ -25,8 +25,8 @@ and after initial data loaded :
 
 <http://localhost:8000/admin>
 
-    - Username: admin
-    - Password: password
+- Username: admin
+- Password: password
 
 ## Below is the standard content from Django Starter Template
 
@@ -48,9 +48,30 @@ Here is a documentation page from Wagtail showing how to integrate Wagtail into 
 
 <https://docs.wagtail.org/en/stable/advanced_topics/add_to_django_project.html>
 
+We could then integrate the development into the wagtail site. Just an idea.
+
+The wagtail templates are in `templates/*.html`.
+
+I think a lot of the look-and-feel comes from `tailwind.config.js`.
+
+Not sure about `webpack.config.js`, maybe something to do with using the website as a web app.
+
+I don't use `fly.toml`.
+
+I don't use `gunicorn.conf.py` and configure gunicorn differently. `/home/wagtail/wagtail.resdigita.com/venv/bin/gunicorn --env WAGTAIL_ENV='production' --access-logfile /var/log/wagtail/wagtail-resdigita-com-access.log --error-logfile /var/log/wagtail/wagtail-resdigita-com-error.log --chdir /home/wagtail/wagtail.resdigita.com --workers 12 --bind 0.0.0.0:8902 wagtailresdigitacom.wsgi:application`
+
+`Dockerfile` looks nice, but I don't use it either.
+
+I do use the default setup of `sqlite`.
+
 ## Decision not made : WAGTAIL-NEWS-TEMPLATE
 
 I was surprised by looking into the Wagtail starter setups to find that there really isn't an empty template that pleased me. Consequentially, I decided to go with one that looked already pretty opinionated -- the Wagtail News Template -- but in reality, I think it is less opinionated than some of the stuff Torchbox (the company behind Wagtail) had produced otherwise. This works prette well.
+
+Wagtail News Template is available here:
+
+<https://github.com/torchbox/wagtail-news-template>
+
 
 ## Wagtail Starter Kit - Django Project Template
 
