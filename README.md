@@ -39,13 +39,18 @@ The stack might be a little top-heavy:
 
 By default, I use the sqlite database engine until we integrate SSO with key.resdigita.com. 
 
+## Thoughts about developing strategy
+
+Wagtail, as a Django app, integrates well with vanilla Django. As such, maybe let's develop our custom parts as Django apps without necessarily depending on 
+Wagtail nor Wagtail-News-Template as in `wagtailresdigitacom`?
+
+Here is a documentation page from Wagtail showing how to integrate Wagtail into an existing Django app, although our strategy may be to integrate distinct Django apps into Wagtail:
+
+<https://docs.wagtail.org/en/stable/advanced_topics/add_to_django_project.html>
+
 ## Decision not made : WAGTAIL-NEWS-TEMPLATE
 
 I was surprised by looking into the Wagtail starter setups to find that there really isn't an empty template that pleased me. Consequentially, I decided to go with one that looked already pretty opinionated -- the Wagtail News Template -- but in reality, I think it is less opinionated than some of the stuff Torchbox (the company behind Wagtail) had produced otherwise. This works prette well.
-
-## Suggestion for Sviatlana and in general development : vanilla Django
-
-Wagtail, as a Django app, integrates well with vanilla Django. As such, maybe let's develop our custom parts as Django apps without necessarily depending on Wagtail nor Wagtail-News-Template as in `wagtailresdigitacom`?
 
 ## Wagtail Starter Kit - Django Project Template
 
