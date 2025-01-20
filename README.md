@@ -27,7 +27,7 @@ Using `gnumake` from the command-line, here is how to get started :
 ```
 make venv
 make pip
-make load-data
+make init
 make start
 ```
 
@@ -38,7 +38,7 @@ and after initial data loaded :
 
 ## Wagtail
 
-Here isthe stack:
+Here is the stack:
 
 * wagtail
 * django
@@ -60,6 +60,10 @@ We could then integrate the development into the wagtail site. Just an idea.
 The wagtail templates are in `templates/*.html`.
 
 I do use the default setup of `sqlite`.
+
+## Alternative branch News
+
+There is a separate starter template `wagtail-news-template` on the branch `news`. This is from the branch `notemplate`. 
 
 ## Wagtail Starter Kit - Django Project Template
 
@@ -274,6 +278,16 @@ in
         isReadOnly = false; 
       }; 
     };
+    bindMounts = { 
+      "/home/wagtail/wagtail.resdigita.com.main/media" = { 
+        hostPath = "/var/www/wagtail.resdigita.com.main/media";
+        isReadOnly = false; 
+      }; 
+      "/home/wagtail/wagtail.resdigita.com.main/static" = { 
+        hostPath = "/var/www/wagtail.resdigita.com.main/static";
+        isReadOnly = false; 
+      }; 
+    };
     systemd.services.wagtail-resdigita-com = {
       description = "wagtail.resdigita.com Website based on wagtail-news-starter";
       after = [ "network.target" ];
@@ -292,11 +306,44 @@ in
       };
     };
   };
+    systemd.services.wagtail-resdigita-com-main = {
+      description = "wagtail.resdigita.com Website from main branch based on no template";
+      after = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        WorkingDirectory = "/home/wagtail/wagtail.resdigita.com.main/";
+        ExecStart = ''/home/wagtail/wagtail.resdigita.com.main/venv/bin/gunicorn --env WAGTAIL_ENV='production' --access-logfile /var/log/wagtail/wagtail-resdigita-com-main-access.log --error-logfile /var/log/wagtail/wagtail-resdigita-com-main-error.log --chdir /home/wagtail/wagtail.resdigita.com.main --workers 12 --bind 0.0.0.0:8903 wagtailresdigitacom.wsgi:application'';
+        Restart = "always";
+        RestartSec = "10s";
+        EnvironmentFile = "/home/wagtail/wagtail.resdigita.com.main/.env";
+        User = "wagtail";
+        Group = "users";
+      };
+      unitConfig = {
+        StartLimitInterval = "1min";
+      };
+    };
+  };
   services.nginx.virtualHosts = {
-    "wagtail.resdigita.com"= {
+    "wagtailnews.resdigita.com"= {
       root = "/var/www/wagtail.resdigita.com/";
       locations."/" = {
         proxyPass = "http://127.0.0.1:8902/";
+        extraConfig = nginxLocationWagtailExtraConfig;
+      };
+      enableACME=true;
+      forceSSL = true;
+      locations."/favicon.ico" = { proxyPass = null; };
+      locations."/static" = { proxyPass = null; };
+      locations."/media" = { proxyPass = null; };
+      locations."/.well-known" = { proxyPass = null; };
+    };
+  };
+  services.nginx.virtualHosts = {
+    "wagtail.resdigita.com"= {
+      root = "/var/www/wagtail.resdigita.com.main/";
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:8903/";
         extraConfig = nginxLocationWagtailExtraConfig;
       };
       enableACME=true;
