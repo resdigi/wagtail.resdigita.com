@@ -88,6 +88,11 @@ Wagtail News Template is available here:
 
 <https://github.com/torchbox/wagtail-news-template>
 
+**I am not happy with WAGTAIL-NEWS-TEMPLATE!** This is not a blog out-of-the-box. I tried writing an article and can't add images !
+
+<https://wagtail.resdigita.com/blog/digital-human/>
+
+Maybe continue with ghost integration only for article composition?
 
 ## Wagtail Starter Kit - Django Project Template
 
