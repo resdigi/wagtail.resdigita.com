@@ -21,12 +21,19 @@ and after initial data loaded :
 
 `make start`
 
-## Admin site
+## Web access
 
-<http://localhost:8000/admin>
+| Site | URL |
+| ---  | --- |
+| Qualification | <https://wagtail.resdigita.com> |
+| Localhost | <http://localhost:8000> |
+| Qualification Admin | <https://wagtail.resdigita.com/admin> |
+| Localhost | <http://localhost:8000/admin> |
 
-- Username: admin
-- Password: password
+
+| Username | Password |
+| ---  | --- |
+| admin | password |
 
 ## Below is the standard content from Django Starter Template
 
