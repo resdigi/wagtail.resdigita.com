@@ -4,7 +4,21 @@ Wagtail Website for ResDigita.com
 
 https://github.com/resdigi/wagtail.resdigita.com
 
-The app name is wagtailresdigitacom. 
+The app name is `wagtailresdigitacom`. 
+
+## Web access
+
+| Site | URL |
+| ---  | --- |
+| Qualification | <https://wagtail.resdigita.com> |
+| Localhost | <http://localhost:8000> |
+| Qualification Admin | <https://wagtail.resdigita.com/admin> |
+| Localhost | <http://localhost:8000/admin> |
+
+
+| Username | Password |
+| ---  | --- |
+| admin | password |
 
 ## Makefile
 
@@ -21,19 +35,6 @@ and after initial data loaded :
 
 `make start`
 
-## Web access
-
-| Site | URL |
-| ---  | --- |
-| Qualification | <https://wagtail.resdigita.com> |
-| Localhost | <http://localhost:8000> |
-| Qualification Admin | <https://wagtail.resdigita.com/admin> |
-| Localhost | <http://localhost:8000/admin> |
-
-
-| Username | Password |
-| ---  | --- |
-| admin | password |
 
 ## Below is the standard content from Django Starter Template
 
