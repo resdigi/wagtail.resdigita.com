@@ -25,8 +25,8 @@ and after initial data loaded :
 
 <http://localhost:8000/admin>
 
-    - Username: admin
-    - Password: password
+- Username: admin
+- Password: password
 
 ## Below is the standard content from Django Starter Template
 
@@ -42,6 +42,10 @@ By default, I use the sqlite database engine until we integrate SSO with key.res
 ## Decision not made : WAGTAIL-NEWS-TEMPLATE
 
 I was surprised by looking into the Wagtail starter setups to find that there really isn't an empty template that pleased me. Consequentially, I decided to go with one that looked already pretty opinionated -- the Wagtail News Template -- but in reality, I think it is less opinionated than some of the stuff Torchbox (the company behind Wagtail) had produced otherwise. This works prette well.
+
+Wagtail News Template is available here:
+
+<https://github.com/torchbox/wagtail-news-template>
 
 ## Suggestion for Sviatlana and in general development : vanilla Django
 
