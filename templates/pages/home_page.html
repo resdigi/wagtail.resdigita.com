@@ -10,6 +10,20 @@
             </h1>
             
             <div class="
+            absolute
+            overflow-hidden
+            z-[-1]
+            right-[-78px]
+            top-[98px]
+            w-52
+            h-52
+            md:right-[-131px]
+            md:top-[24px]
+            tall:md:top-[131px]
+            md:w-64
+            md:h-64"
+            
+            notclass="
                 absolute
                 overflow-hidden
                 z-[-1]
@@ -28,6 +42,7 @@
                 border-dashed
                 border-mackerel-200"
             >
+            <img src="{% static 'images/logo.png' %}" alt="ResDigit@" class="size-full">
             </div>
             <div class="max-w-[636px] pt-5 rich-text">
                 {{ page.introduction|richtext }}

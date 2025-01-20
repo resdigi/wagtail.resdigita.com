@@ -72,6 +72,14 @@ I don't use `gunicorn.conf.py` and configure gunicorn differently. `/home/wagtai
 
 I do use the default setup of `sqlite`.
 
+## Tailwind CSS
+
+This came with wagtail-news-template. It seems to require `npm install` and  `npm run build:prod`. I added `tailwind-install` and `tailwind-compile` to the Makefile. 
+
+Tailwind seems to take static files from `static_src` and put them into `static_compiled`. Django then takes `static_compiled` and puts it in to `static`.
+
+For now, all static assets are at the root level. It would seem cleaner to me to have everything in the `wagtailresdigitacom` app.
+
 ## Decision not made : WAGTAIL-NEWS-TEMPLATE
 
 I was surprised by looking into the Wagtail starter setups to find that there really isn't an empty template that pleased me. Consequentially, I decided to go with one that looked already pretty opinionated -- the Wagtail News Template -- but in reality, I think it is less opinionated than some of the stuff Torchbox (the company behind Wagtail) had produced otherwise. This works prette well.

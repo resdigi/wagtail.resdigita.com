@@ -31,6 +31,15 @@ firstbareinstall:
 secretkey:
 	./venv/bin/python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 
+collectstatic:
+	./venv/bin/python ./manage.py collectstatic --noinput
+
+tailwind-install:
+	npm install
+
+tailwind-compile:
+	npm run build:prod
+
 init: load-data start
 
 start:
