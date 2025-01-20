@@ -8,12 +8,13 @@ The app name is wagtailresdigitacom.
 
 ## Makefile
 
-Using gnumake from the command-line :
+Using `gnumake` from the command-line, here is how to get started :
 
 ```
 make venv
 make pip
-make init
+make load-data
+make start
 ```
 
 and after initial data loaded :
@@ -27,12 +28,30 @@ and after initial data loaded :
     - Username: admin
     - Password: password
 
+## Below is the standard content from Django Starter Template
+
+The stack might be a little top-heavy:
+
+* wagtail-news-template
+* wagtail
+* django
+* python
+
+By default, I use the sqlite database engine until we integrate SSO with key.resdigita.com. 
+
+## Decision not made : WAGTAIL-NEWS-TEMPLATE
+
+I was surprised by looking into the Wagtail starter setups to find that there really isn't an empty template that pleased me. Consequentially, I decided to go with one that looked already pretty opinionated -- the Wagtail News Template -- but in reality, I think it is less opinionated than some of the stuff Torchbox (the company behind Wagtail) had produced otherwise. This works prette well.
+
+## Suggestion for Sviatlana and in general development : vanilla Django
+
+Wagtail, as a Django app, integrates well with vanilla Django. As such, maybe let's develop our custom parts as Django apps without necessarily depending on Wagtail nor Wagtail-News-Template as in `wagtailresdigitacom`?
 
 ## Wagtail Starter Kit - Django Project Template
 
 This Django project template is designed for creating Wagtail builds quickly, intended for developers to bootstrap their Wagtail site development using `wagtail start --template=`. The template comes with pre-defined pages, blocks, functionalities, and fixtures to streamline the initial setup process.
 
-## Getting Started
+### Getting Started
 
 1. **Check that you have an appropriate version of Python 3**  You want to make sure that you have a [compatible version](https://docs.wagtail.org/en/stable/releases/upgrading.html#compatible-django-python-versions) installed:
 
@@ -94,7 +113,7 @@ All commands from now on should be run from inside the virtual environment.
     - Username: admin
     - Password: password
 
-### Deploying
+#### Deploying
 
 Once you have your own copy of the template, you can extend and configure it however you like.
 
@@ -102,7 +121,7 @@ To get it deployed, follow the instructions below for your hosting provider of c
 
 Don't see your preference here? Contributions are always welcome!
 
-#### fly.io
+##### fly.io
 
 Before you can deploy to [fly.io](https://fly.io/), you will need an account and the `fly` CLI tool will need to be [installed on your machine](https://fly.io/docs/flyctl/install/).
 
@@ -127,7 +146,7 @@ You can now visit your wagtail site at the URL provided by `fly`. We strongly re
 
 The database and user-uploaded media are stored in the attached volume. To save costs and improve efficiency, the app will automatically stop when not in use, but will automatically restart when the browser loads.
 
-## Contributing
+### Contributing
 
 To customize this template, you can either make changes directly or backport changes from a generated project (via the `wagtail start` command) by following these steps:
 
@@ -147,3 +166,142 @@ Make sure to test any changes by reviewing them against a newly created project,
 
 
 Happy coding with Wagtail! If you encounter any issues or have suggestions for improvement, feel free to contribute or open an issue.
+
+## Configure .env in production
+
+.env is used by our systemd service. 
+
+```
+ALLOWED_HOSTS="wagtail.resdigita.com"
+CSRF_TRUSTED_ORIGINS="https://wagtail.resdigita.com,wagtail.resdigita.com"
+SECRET_KEY=THE_VALUE_HERE_WITHOUT_QUOTES
+```
+
+SECRET_KEY can be obtained by `make secretkey` and is only required in production.
+
+## Nixos configuration in production environment
+
+I use Nixos for production. Below are extracts of our configuration environment.
+
+```nix
+{ config, pkgs, lib, ... }:
+let
+in
+{
+  containers.wagtail = {
+    users.users.wagtail.uid = 1003;
+    users.groups.wwwrun.gid = 54;
+    users.groups.wwwrun.members = ["wagtail"];
+    environment.systemPackages = with pkgs; [
+        ((vim_configurable.override {  }).customize{
+          name = "vim";
+          vimrcConfig.customRC = ''
+            " your custom vimrc
+            set mouse=a
+            set nocompatible
+            colo torte
+            syntax on
+            set tabstop     =2
+            set softtabstop =2
+            set shiftwidth  =2
+            set expandtab
+            set autoindent
+            set smartindent
+            " ...
+          '';
+          }
+        )
+        python311
+        python311Packages.pillow
+        python311Packages.gunicorn
+        python311Packages.pip
+        libjpeg
+        zlib
+        libtiff
+        freetype
+        python311Packages.venvShellHook
+        curl
+        wget
+        lynx
+        dig    
+        python311Packages.pylibjpeg-libjpeg
+        git
+        tmux
+        bat
+        cowsay
+        lzlib
+        killall
+        pwgen
+        python311Packages.pypdf2
+        python311Packages.python-ldap
+        python311Packages.pq
+        python311Packages.aiosasl
+        python311Packages.psycopg2
+        gettext
+        sqlite
+        postgresql_14
+        pipx
+        gnumake
+        poetry
+        nodejs_22
+        yarn
+        jq
+        ];
+      nix.settings.experimental-features = "nix-command flakes";
+      time.timeZone = "Europe/Amsterdam";
+      system.stateVersion = "24.11";
+    bindMounts = { 
+      "/home/wagtail/wagtail.resdigita.com/media" = { 
+        hostPath = "/var/www/wagtail.resdigita.com/media";
+        isReadOnly = false; 
+      }; 
+      "/home/wagtail/wagtail.resdigita.com/static" = { 
+        hostPath = "/var/www/wagtail.resdigita.com/static";
+        isReadOnly = false; 
+      }; 
+    };
+    systemd.services.wagtail-resdigita-com = {
+      description = "wagtail.resdigita.com Website based on wagtail-news-starter";
+      after = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        WorkingDirectory = "/home/wagtail/wagtail.resdigita.com/";
+        ExecStart = ''/home/wagtail/wagtail.resdigita.com/venv/bin/gunicorn --env WAGTAIL_ENV='production' --access-logfile /var/log/wagtail/wagtail-resdigita-com-access.log --error-logfile /var/log/wagtail/wagtail-resdigita-com-error.log --chdir /home/wagtail/wagtail.resdigita.com --workers 12 --bind 0.0.0.0:8902 wagtailresdigitacom.wsgi:application'';
+        Restart = "always";
+        RestartSec = "10s";
+        EnvironmentFile = "/home/wagtail/wagtail.resdigita.com/.env";
+        User = "wagtail";
+        Group = "users";
+      };
+      unitConfig = {
+        StartLimitInterval = "1min";
+      };
+    };
+  };
+  services.nginx.virtualHosts = {
+    "wagtail.resdigita.com"= {
+      root = "/var/www/wagtail.resdigita.com/";
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:8902/";
+        extraConfig = nginxLocationWagtailExtraConfig;
+      };
+      enableACME=true;
+      forceSSL = true;
+      locations."/favicon.ico" = { proxyPass = null; };
+      locations."/static" = { proxyPass = null; };
+      locations."/media" = { proxyPass = null; };
+      locations."/.well-known" = { proxyPass = null; };
+    };
+  };
+  users = {
+    users = {
+        wagtail = {
+            isNormalUser = true;
+        };
+    };
+    groups = {
+        
+    };
+  };
+}
+```
