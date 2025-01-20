@@ -64,7 +64,7 @@ I do use the default setup of `sqlite`.
 
 ## Alternative branch News
 
-There is a separate starter template `wagtail-news-template` on the branch `news`. This `main` is from the branch `notemplate`. 
+There is a separate starter template `wagtail-news-template` on the branch `news` ([news branch on github.com](https://github.com/resdigi/wagtail.resdigita.com/tree/news)). This `main` is from the branch `notemplate`. 
 
 I was surprised by looking into the Wagtail starter setups to find that there really isn't an empty template that pleased me. Consequentially, I decided to go with one that looked already pretty opinionated -- the Wagtail News Template -- but in reality, I think it is less opinionated than some of the stuff Torchbox (the company behind Wagtail) had produced otherwise. This works prette well.
 
