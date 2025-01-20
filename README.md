@@ -1,4 +1,4 @@
-# wagtail.resdigita.com
+# Resdigit@ website recreation in Wagtail
 
 Wagtail Website for ResDigita.com
 
@@ -13,9 +13,9 @@ The app name is `wagtailresdigitacom`.
 | Qualification | <https://wagtail.resdigita.com> |
 | Localhost | <http://localhost:8000> |
 | Qualification Admin | <https://wagtail.resdigita.com/admin> |
-| Localhost | <http://localhost:8000/admin> |
-| Qualification News Admin | <https://wagtail.resdigita.com> |
-| Qualification News | <https://wagtail.resdigita.com/admin> |
+| Localhost Admin | <http://localhost:8000/admin> |
+| Qualification News | <https://wagtail.resdigita.com> |
+| Qualification News Admin | <https://wagtail.resdigita.com/admin> |
 
 | Username | Password |
 | ---  | --- |
@@ -375,8 +375,6 @@ in
       locations."/media" = { proxyPass = null; };
       locations."/.well-known" = { proxyPass = null; };
     };
-  };
-  services.nginx.virtualHosts = {
     "wagtail.resdigita.com"= {
       root = "/var/www/wagtail.resdigita.com.main/";
       locations."/" = {
