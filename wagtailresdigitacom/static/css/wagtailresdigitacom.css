@@ -1,0 +1,17 @@
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+img.richtext-image.left {
+  float: left;
+}
+
+img.richtext-image.right {
+  float: right;
+}
+
+img.richtext-image.full-width {
+  width: auto;
+  margin: 0 auto;
+}

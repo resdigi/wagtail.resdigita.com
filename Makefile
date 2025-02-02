@@ -8,10 +8,13 @@ pip:
 	make venv
 	./venv/bin/pip install -r requirements.txt
 
-init:
+update: 
 	./venv/bin/python ./manage.py makemigrations
 	./venv/bin/python ./manage.py migrate
-	./venv/bin/python ./manage.py collectstatic
+	./venv/bin/python ./manage.py collectstatic --noinput
+
+init:
+	make update
 	./venv/bin/python ./manage.py createsuperuser
 
 start:

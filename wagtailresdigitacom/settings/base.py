@@ -24,6 +24,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    "wagtailresdigitacom",
     "home",
     "search",
     "wagtail.contrib.forms",
@@ -36,6 +37,8 @@ INSTALLED_APPS = [
     "wagtail.images",
     "wagtail.search",
     "wagtail.admin",
+    'wagtail.locales',  # Optinal Wagtial locale management UI
+    "wagtail.contrib.simple_translation",
     "wagtail",
     "modelcluster",
     "taggit",
@@ -56,6 +59,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
+    'django.middleware.locale.LocaleMiddleware', # For automatic language prefix
 ]
 
 ROOT_URLCONF = "wagtailresdigitacom.urls"
@@ -73,6 +77,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -114,11 +119,21 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "fr"
+
+WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
+    ('fr', "Français"),
+    ('en', "English"),
+]
+
 
 TIME_ZONE = "UTC"
 
 USE_I18N = True
+WAGTAIL_I18N_ENABLED = True
+USE_L10N = True
+
+# WAGTAILSIMPLETRANSLATION_SYNC_PAGE_TREE = True
 
 USE_TZ = True
 

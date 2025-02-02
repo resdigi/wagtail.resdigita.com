@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags %}
+
+{% block body_class %}pagehome{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
+<link rel="stylesheet" href="{% static 'css/wagtailresdigitacom.css' %}">
+
+{% endblock extra_css %}
+
+{% block content %}
+
+<h1>{{ self.title }}</h1>
+
+{{ self.content|richtext }}
+
+{% endblock content %}
