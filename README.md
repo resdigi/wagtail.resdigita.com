@@ -6,6 +6,14 @@ https://github.com/resdigi/wagtail.resdigita.com
 
 The app name is `wagtailresdigitacom`. 
 
+https://task.lesgrandsvoisins.com/projects/62
+
+https://mark.lesgrandsvoisins.com/resdigita
+
+https://wagtail.resdigita.com/
+
+https://wagtail.resdigita.com/admin/
+
 ## Web access
 
 | Site | URL |
