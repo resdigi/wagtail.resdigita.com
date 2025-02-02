@@ -36,6 +36,8 @@ and after initial data loaded :
 
 `make start`
 
+also for maintenance : `make secretkey` `make update`
+
 
 ## Wagtail
 
