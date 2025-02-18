@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-projectindexpage{% endblock %}
+
+{% block content %}
+    <h1>{{ page.title }}</h1>
+
+    <div class="intro">{{ page.intro|richtext }}</div>
+
+    {% for project in page.get_children %}
+    {% with project=project.specific %}
+        <h2><a href="{% pageurl project %}">{{ project.title }}</a></h2>
+        <p>{{ project.intro }}</p>
+        {{ project.body|richtext }}
+    {% endwith %}
+{% endfor %}
+{% endblock %}
