@@ -34,26 +34,19 @@
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
-
-        <nav>
-        {% for language_code, language_name in LANGUAGES %}
-            {% get_language_info for language_code as lang %}
-
-            {% language language_code %}
-                <a href="{% pageurl page.localized %}" rel="alternate" hreflang="{{ language_code }}">
-                    {{ lang.name_local }}
-                </a>
-            {% endlanguage %}
-        {% endfor %}
-        </nav>
-
+    
         {% block content %}{% endblock %}
-
+    
+        {# Add this to the file: #}
+        {% include "includes/footer.html" %}
+    
         {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/wagtailresdigitacom.js' %}"></script>
-
+        <script type="text/javascript" src="{% static 'js/mysite.js' %}"></script>
+    
         {% block extra_js %}
         {# Override this in templates to add extra javascript #}
         {% endblock %}
     </body>
 </html>
+
+

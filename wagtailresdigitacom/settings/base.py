@@ -25,12 +25,14 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
     "wagtailresdigitacom",
+    "base",
     "home",
     "blog",
     "project",
     "search",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
+    "wagtail.contrib.settings",
     "wagtail.embeds",
     "wagtail.sites",
     "wagtail.users",
@@ -80,6 +82,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 'django.template.context_processors.i18n',
+                'wagtail.contrib.settings.context_processors.settings',
             ],
         },
     },
