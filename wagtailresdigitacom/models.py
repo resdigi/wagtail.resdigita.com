@@ -6,6 +6,9 @@ from wagtail.admin.panels import FieldPanel
 
 from blog.models import BlogPage
 from project.models import ProjectPage
+# from base.models import NavigationSettings
+
+# from wagtail.contrib.settings.models import BaseGenericSetting
 
 class PageHome(Page):
     content = RichTextField(
@@ -24,6 +27,7 @@ class PageHome(Page):
 
         blogpages = BlogPage.objects.live().order_by('-first_published_at')
         projectpages = ProjectPage.objects.live()
+        # navset = NavigationSettings.load(request_or_site=request)
 
         # Update template context
         
