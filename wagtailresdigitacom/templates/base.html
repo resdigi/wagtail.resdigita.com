@@ -1,7 +1,7 @@
 {% load static wagtailcore_tags %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
         <title>
@@ -31,21 +31,23 @@
 
         {# Global stylesheets #}
         <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/wagtailresdigitacom.css' %}">
+        {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/wagtailresdigitacom.css' %}"> {% endcomment %}
 
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="{% block body_class %}{% endblock %} bg-slate-900 text-gray-100">
         {% include "includes/header.html" %}
 
         {# Add a unique identifier: #}
         {# Wrap your block content  within a <main> HTML5 tag: #}
-        <main id="main">
+        {% comment %} <main id="main"> {% endcomment %}
+            <div class="mx-auto max-w-screen-lg px-3 py-6">
             {% block content %}{% endblock %}
-        </main>
+            </div>
+        {% comment %} </main> {% endcomment %}
 
         {% include "includes/footer.html" %}
 
