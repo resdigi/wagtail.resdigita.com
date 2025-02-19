@@ -35,6 +35,7 @@ header {
     text-align: center;
 }
 
+/* this is for accesebility, leave it */
 .skip-link {
   position: absolute;
   top: -30px;
