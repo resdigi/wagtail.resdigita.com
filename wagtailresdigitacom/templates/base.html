@@ -25,6 +25,7 @@
         {% endif %}
 
         {# Global stylesheets #}
+        <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/wagtailresdigitacom.css' %}">
 
         {% block extra_css %}
@@ -35,7 +36,9 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
     
-        {% block content %}{% endblock %}
+        {% block content %}
+        
+        {% endblock %}
     
         {# Add this to the file: #}
         {% include "includes/footer.html" %}
