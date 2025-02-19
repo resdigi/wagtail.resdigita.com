@@ -1,0 +1,1 @@
+[{"model": "project.projectindexpage", "pk": 9, "fields": {"intro": "<p data-block-key=\"izm99\">Nos Projets</p>"}}, {"model": "project.projectpage", "pk": 12, "fields": {"intro": "Notre premier projet", "body": ""}}, {"model": "project.projectpage", "pk": 13, "fields": {"intro": "Notre deuxième projet", "body": ""}}]

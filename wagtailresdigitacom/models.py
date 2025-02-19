@@ -4,6 +4,8 @@ from wagtail.models import Page
 from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel
 
+from blog.models import BlogPage
+from project.models import ProjectPage
 
 class PageHome(Page):
     content = RichTextField(
@@ -15,3 +17,16 @@ class PageHome(Page):
         FieldPanel("title", classname="full title"),
         FieldPanel("content"),
     )
+
+    def get_context(self, request):
+
+        context = super().get_context(request)
+
+        blogpages = BlogPage.objects.live().order_by('-first_published_at')
+        projectpages = ProjectPage.objects.live()
+
+        # Update template context
+        
+        context['blogpages'] = blogpages
+        context['projectpages'] = projectpages
+        return context
