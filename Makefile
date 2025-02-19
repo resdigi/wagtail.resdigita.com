@@ -25,3 +25,23 @@ secretkey:
 
 collectstatic:
 	./venv/bin/python ./manage.py collectstatic --noinput
+
+# From https://tailwindcss.com/docs/installation/tailwind-cli
+tailwindexe:
+	wget https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64 
+	mv tailwindcss-linux-x64 venv/bin/tailwindcss
+	chmod +x venv/bin/tailwindcss
+
+# From https://tailwindcss.com/docs/installation/tailwind-cli
+tailwindnpm:
+	npm install tailwindcss @tailwindcss/cli
+
+# From https://tailwindcss.com/docs/installation/tailwind-cli
+tailwindcompile:
+	npx @tailwindcss/cli -i ./tailwind/src/input.css -o ./wagtailresdigitacom/static/css/tailwind.css -m
+
+tailwindcompilemax:
+	npx @tailwindcss/cli -i ./tailwind/src/input.css -o ./wagtailresdigitacom/static/css/tailwind.css 
+
+tailwindwatch:
+	npx @tailwindcss/cli -i ./tailwind/src/input.css -o ./wagtailresdigitacom/static/css/tailwind.css --watch
