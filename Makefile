@@ -47,9 +47,10 @@ tailwindwatch:
 	npx @tailwindcss/cli -i ./tailwind/src/input.css -o ./wagtailresdigitacom/static/css/tailwind.css --watch
 
 fixturesdump:
+	./venv/bin/python manage.py dumpdata wagtailimages > fixtures/wagtailimages.json
 	./venv/bin/python manage.py dumpdata blog > fixtures/blog.json
 	./venv/bin/python manage.py dumpdata project > fixtures/project.json
-	./venv/bin/python manage.py dumpdata wagtailimages > fixtures/wagtailimages.json
+	./venv/bin/python manage.py dumpdata base > fixtures/base.json
 	./venv/bin/python manage.py dumpdata wagtailresdigitacom > fixtures/wagtailresdigitacom.json
 
 fixturesload:
