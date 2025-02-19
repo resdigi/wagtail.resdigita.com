@@ -22,6 +22,8 @@ from wagtail.contrib.settings.models import (
 # import register_snippet:
 from wagtail.snippets.models import register_snippet
 
+from modelcluster.fields import ParentalKey
+
 @register_setting
 class NavigationSettings(BaseGenericSetting):
     linkedin_url = models.URLField(verbose_name="LinkedIn URL", blank=True)
