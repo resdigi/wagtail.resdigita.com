@@ -80,7 +80,9 @@
           <div class="ml-3 flex gap-2">
             {% with tags=item.tags.all %}
               {% if tags %}
+                {% for tag in tags %}
                 <div class="rounded-md px-2 py-1 text-xs font-semibold bg-lime-400 text-lime-900">{{ tag }}</div>
+                {% endfor %}
               {% endif %}
             {% endwith %}
             {% comment %} 
