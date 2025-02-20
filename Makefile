@@ -48,8 +48,7 @@ tailwindwatch:
 
 fixturesdump:
 	rm fixtures/*.json
-	./venv/bin/python manage.py dumpdata > fixtures/all.json
-
+	./venv/bin/python manage.py dumpdata  --natural-foreign > fixtures/all.json
 
 fixturesload:
 	./venv/bin/python manage.py loaddata fixtures/*.json
