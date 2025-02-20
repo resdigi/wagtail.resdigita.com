@@ -1,0 +1,6 @@
+{% load menu_tags i18n %}
+<ul class="sub-menu">
+  {% for sub_item in item.sub_menu.items %}
+      <li class="{{ sub_item.active_class }}"><a href="{{ sub_item.href }}">{% translate sub_item.text %}</a></li>
+  {% endfor %}
+</ul>

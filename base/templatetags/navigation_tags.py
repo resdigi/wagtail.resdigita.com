@@ -11,6 +11,9 @@ def get_footer_text(context):
     footer_text = context.get("footer_text", "")
 
     if not footer_text:
+        instance = FooterText.objects.filter(live=True).filter(locale__language_code="%s" % context.get("LANGUAGE_CODE")).first()
+        footer_text = instance.body if instance else False
+    if not footer_text:
         instance = FooterText.objects.filter(live=True).first()
         footer_text = instance.body if instance else ""
 

@@ -1,4 +1,4 @@
-{% load wagtailcore_tags navigation_tags wagtailuserbar i18n %}
+{% load wagtailcore_tags navigation_tags wagtailuserbar i18n menu_tags %}
 {% get_site_root as site_root %}
 {# Add this: #}
 {% comment %} <a href="#main" class="skip-link">Skip to content</a> {% endcomment %}
@@ -23,23 +23,18 @@
         </a>
         <nav>
             <ul class="flex gap-x-3 font-medium text-gray-200">
-                {% for menuitem in site_root.get_children.live.in_menu %}
-                    <li class="hover:text-white">
-                        <a href="{% slugurl menuitem %}">{{ menuitem.title }}</a>
-                    </li>
-                {% endfor %}
-                <li class="hover:text-white">
-                    <a href="/search/">{% translate "Search" %}</a>
-                </li>
+                {% main_menu max_levels=3 template="menus/custom_main_menu.html" sub_menu_template="menus/custom_sub_menu.html" %}
+                {% if page %}
+                    {% for translation in page.get_translations.live %}
+                        <li class="hover:text-white">
+                            <a href="{% pageurl translation %}"
+                               rel="alternate"
+                               hreflang="{{ translation.locale.language_code }}">{{ translation.locale.language_name_local }}</a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
             </ul>
         </nav>
-        {% if page %}
-            {% for translation in page.get_translations.live %}
-                <a href="{% pageurl translation %}"
-                   rel="alternate"
-                   hreflang="{{ translation.locale.language_code }}">{{ translation.locale.language_name_local }}</a>
-            {% endfor %}
-        {% endif %}
     </div>
 </div>
 {% comment %} </header> {% endcomment %}

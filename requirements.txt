@@ -1,3 +1,5 @@
 Django
 wagtail
 gunicorn
+wagtailmenus
+wagtail_modeladmin

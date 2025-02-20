@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}
+{% load static wagtailcore_tags wagtailimages_tags wagtailsettings_tags i18n %}
 
 {% comment %} {% block body_class %}pagehome{% endblock %} {% endcomment %}
 
@@ -87,7 +87,7 @@
         Recent <span class="bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent">Posts</span>
       </div>
       <div class="text-sm">
-        <a href="/projects">View all Projects →</a>
+        <a href="/projects">{% translate "View all Projects" %} →</a>
       </div>
     </div>
   </div>
@@ -116,7 +116,7 @@
     </a>
     {% endwith %}
     {% endfor %}
-    <a href="/blog">View all Posts →</a>
+    <a href="/blog">{% translate "View all Posts" %} →</a>
 </div>
 </div>
 
