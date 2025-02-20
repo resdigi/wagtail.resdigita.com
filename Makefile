@@ -48,7 +48,17 @@ tailwindwatch:
 
 fixturesdump:
 	rm fixtures/*.json
-	./venv/bin/python manage.py dumpdata  --natural-foreign > fixtures/all.json
+	./venv/bin/python manage.py dumpdata  --natural-foreign wagtailcore.Locale wagtailcore.Revision > fixtures/00_locales.json
+	./venv/bin/python manage.py dumpdata  --natural-foreign wagtailcore.Page > fixtures/01_pages.json
+	./venv/bin/python manage.py dumpdata  --natural-foreign wagtailimages.Image > fixtures/02_images.json
+	./venv/bin/python manage.py dumpdata  --natural-foreign wagtaildocs.Document > fixtures/03_documents.json
+	./venv/bin/python manage.py dumpdata  --natural-foreign base > fixtures/04_base.json
+	./venv/bin/python manage.py dumpdata  --natural-foreign taggit > fixtures/05_taggit.json
+	./venv/bin/python manage.py dumpdata  --natural-foreign blog.Author blog.BlogPage blog.BlogPageGalleryImage blog.BlogIndexPage blog.BlogPageTag blog.BlogTagIndexPage  > fixtures/06_blog.json
+	./venv/bin/python manage.py dumpdata  --natural-foreign project.ProjectIndexPage project.ProjectPage project.ProjectPageTag > fixtures/07_projects.json
+	./venv/bin/python manage.py dumpdata  --natural-foreign home > fixtures/08_home.json
+	./venv/bin/python manage.py dumpdata  --natural-foreign wagtailresdigitacom > fixtures/09_wagtailresdigitacom.json
+	./venv/bin/python manage.py dumpdata  --natural-foreign wagtailmenus > fixtures/10_wagtailmenus.json
 
 fixturesload:
 	./venv/bin/python manage.py loaddata fixtures/*.json
