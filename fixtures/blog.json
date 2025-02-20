@@ -1,0 +1,65 @@
+[
+    {
+        "model": "blog.blogindexpage",
+        "pk": 8,
+        "fields": {
+            "intro": "<p data-block-key=\"zp1sj\">Notre blog</p>"
+        }
+    },
+    {
+        "model": "blog.blogpagetag",
+        "pk": 1,
+        "fields": {
+            "tag": 1,
+            "content_object": 10
+        }
+    },
+    {
+        "model": "blog.blogpagetag",
+        "pk": 2,
+        "fields": {
+            "tag": 2,
+            "content_object": 11
+        }
+    },
+    {
+        "model": "blog.blogpage",
+        "pk": 10,
+        "fields": {
+            "date": "2025-02-08",
+            "intro": "Blog Page 1",
+            "body": "",
+            "authors": []
+        }
+    },
+    {
+        "model": "blog.blogpage",
+        "pk": 11,
+        "fields": {
+            "date": "2025-02-03",
+            "intro": "Voilà la page 2 du blog, le web",
+            "body": "",
+            "authors": []
+        }
+    },
+    {
+        "model": "blog.blogpagegalleryimage",
+        "pk": 1,
+        "fields": {
+            "sort_order": 0,
+            "page": 10,
+            "image": 1,
+            "caption": ""
+        }
+    },
+    {
+        "model": "blog.blogpagegalleryimage",
+        "pk": 2,
+        "fields": {
+            "sort_order": 0,
+            "page": 11,
+            "image": 2,
+            "caption": ""
+        }
+    }
+]
