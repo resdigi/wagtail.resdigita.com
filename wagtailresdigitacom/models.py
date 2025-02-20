@@ -13,7 +13,7 @@ from project.models import ProjectPage
 class PageHome(Page):
     content = RichTextField(
         blank=True,
-        features=['h2', 'h3', 'h4', 'bold', 'italic', 'monospace', 'ol', 'ul', 'hr', 'link', 'document-link', 'image', 'embed', 'code', 'blockquote']
+        features=['h2', 'h3', 'h4', 'bold', 'italic', 'ol', 'ul', 'hr', 'link', 'document-link', 'image', 'embed', 'code', 'blockquote']
     )
 
     content_panels = (
