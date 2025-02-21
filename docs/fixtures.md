@@ -10,7 +10,7 @@ Fixtures can be used to provide initial data for models, as described here
 
 ## Note on use of venv in this document
 
-The assumption here is that the venv virtual environment is at a `./venv` folder from the root. The venv python we use in this document is `./venv/bin/python` and also can be created with `make venv` (see [Makefile](../Makefile) and [installation](../installation.md)).
+The assumption here is that the venv virtual environment is at a `./venv` folder from the root. The venv python we use in this document is `./venv/bin/python` and also can be created with `make venv` (see [Makefile](../Makefile) and [installation](./installation.md)).
 
 ## Installation initial state
 
