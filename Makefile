@@ -17,8 +17,11 @@ init:
 	make update
 	./venv/bin/python ./manage.py createsuperuser
 
-start:
+runserver:
 	./venv/bin/python ./manage.py runserver
+
+start:
+	make runserver
 
 secretkey:
 	./venv/bin/python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
@@ -46,22 +49,15 @@ tailwindcompilemax:
 tailwindwatch:
 	npx @tailwindcss/cli -i ./tailwind/src/input.css -o ./wagtailresdigitacom/static/css/tailwind.css --watch
 
-fixturesdump:
+fixtures-dump-test-initial:
 	rm fixtures/*.json
-	./venv/bin/python manage.py dumpdata  --natural-foreign wagtailcore.Locale  > fixtures/00_locales.json
-	./venv/bin/python manage.py dumpdata  --natural-foreign wagtailcore.Revision > fixtures/01_revisions.json
-	./venv/bin/python manage.py dumpdata  --natural-foreign wagtailcore.Page > fixtures/02_pages.json
-	./venv/bin/python manage.py dumpdata  --natural-foreign wagtailimages.Image > fixtures/03_images.json
-	./venv/bin/python manage.py dumpdata  --natural-foreign wagtaildocs.Document > fixtures/04_documents.json
-	./venv/bin/python manage.py dumpdata  --natural-foreign base > fixtures/05_base.json
-	./venv/bin/python manage.py dumpdata  --natural-foreign taggit > fixtures/06_taggit.json
-	./venv/bin/python manage.py dumpdata  --natural-foreign blog  > fixtures/07_blog.json
-	./venv/bin/python manage.py dumpdata  --natural-foreign project > fixtures/08_projects.json
-	./venv/bin/python manage.py dumpdata  --natural-foreign home > fixtures/09_home.json
-	./venv/bin/python manage.py dumpdata  --natural-foreign wagtailresdigitacom > fixtures/10_wagtailresdigitacom.json
-	./venv/bin/python manage.py dumpdata  --natural-foreign wagtailmenus > fixtures/11_wagtailmenus.json
+	./venv/bin/python manage.py dumpdata  --natural-foreign wagtailcore.Locale	wagtailcore.Revision	wagtailcore.Page	wagtailcore.Site wagtailimages.Image 	wagtaildocs.Document 	base 	taggit 	blog 	project 	home 	wagtailresdigitacom  wagtailmenus > fixtures/test-initial.json
+	mkdir -p fixtures/media/images
+	mkdir -p fixtures/media/original_images
+	cp -a fixtures/media/images/* media/images
+	cp -a fixtures/media/original_images/* media/original_images
 
-fixturesload:
-	./venv/bin/python manage.py loaddata fixtures/*.json
+fixtures-load-test-initial:
+	./venv/bin/python manage.py loaddata fixtures/test-initial.json
 	cp -a fixtures/media/* media
 

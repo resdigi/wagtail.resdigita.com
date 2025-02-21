@@ -24,12 +24,6 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    "wagtailresdigitacom",
-    "base",
-    "home",
-    "blog",
-    "project",
-    "search",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.contrib.settings",
@@ -43,8 +37,8 @@ INSTALLED_APPS = [
     "wagtail.admin",
     'wagtail.locales',  # Optinal Wagtial locale management UI
     "wagtail.contrib.simple_translation",
-    "wagtail",
     "modelcluster",
+    "wagtail",
     "taggit",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -54,6 +48,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'wagtail_modeladmin',          # if Wagtail >=5.1; Don't repeat if it's there already
     'wagtailmenus',
+    "wagtailresdigitacom",
+    "base",
+    "home",
+    "blog",
+    "project",
+    "search",
 ]
 
 MIDDLEWARE = [
@@ -68,7 +68,7 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware', # For automatic language prefix
 ]
 
-ROOT_URLCONF = "wagtailresdigitacom.urls"
+ROOT_URLCONF = "settings.urls"
 
 TEMPLATES = [
     {
@@ -93,7 +93,7 @@ TEMPLATES = [
 
 SILENCED_SYSTEM_CHECKS = ["wagtailadmin.W002"] # https://github.com/jazzband/wagtailmenus/issues/464
 
-WSGI_APPLICATION = "wagtailresdigitacom.wsgi.application"
+WSGI_APPLICATION = "settings.wsgi.application"
 
 
 # Database
