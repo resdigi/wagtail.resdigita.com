@@ -15,7 +15,7 @@ SECRET_KEY can be obtained by `make secretkey` and is only required in productio
 
 ## Makefile
 
-Using `gnumake` from the command-line, here is how to get started :
+Using `make` (gnumake) from the command-line (see [Makefile](../Makefile)), here is how to get started :
 
 ```
 make venv
