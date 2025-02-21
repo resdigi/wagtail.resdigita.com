@@ -30,7 +30,7 @@ collectstatic:
 	./venv/bin/python ./manage.py collectstatic --noinput
 
 # From https://tailwindcss.com/docs/installation/tailwind-cli
-tailwind-install-exe:
+tailwind-install-bin-linux:
 	wget https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64 
 	mv tailwindcss-linux-x64 venv/bin/tailwindcss
 	chmod +x venv/bin/tailwindcss
