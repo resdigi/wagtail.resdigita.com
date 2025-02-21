@@ -14,7 +14,7 @@ The assumption here is that the venv virtual environment is at a `./venv` folder
 
 ## Installation initial state
 
-See <./installation.md>
+See [installation](./installation.md) documentation for setting up environment.
 
 The conformity of the installation should be perfect for this to work. It probably is a good test of the installation itself.
 
@@ -32,7 +32,7 @@ and don't forget the media files
 
 This is assuming the website data is coherent with initial test data and is not running. You can also use `make fixtures-dump-test-initial` from the root.
 
-`./venv/bin/python manage.py dumpdata  --natural-foreign wagtailcore.Locale	wagtailcore.Revision	wagtailcore.Page	wagtailcore.Site wagtailimages.Image 	wagtaildocs.Document 	base 	taggit 	blog 	project 	home 	wagtailresdigitacom  wagtailmenus > fixtures/test-initial.json`
+`./venv/bin/python manage.py dumpdata  --natural-foreign wagtailcore.Locale wagtailcore.Revision wagtailcore.Page wagtailcore.Site wagtailimages.Image  wagtaildocs.Document  base  taggit  blog  project  home  wagtailresdigitacom  wagtailmenus > fixtures/test-initial.json`
 
 and don't forget the media files.
 
