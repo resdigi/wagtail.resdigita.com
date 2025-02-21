@@ -6,20 +6,7 @@ https://github.com/resdigi/wagtail.resdigita.com
 
 The app name is `wagtailresdigitacom`. 
 
-## Web access
 
-| Site | URL |
-| ---  | --- |
-| Qualification | <https://wagtail.resdigita.com> |
-| Localhost | <http://localhost:8000> |
-| Qualification Admin | <https://wagtail.resdigita.com/admin> |
-| Localhost Admin | <http://localhost:8000/admin> |
-| Qualification News | <https://wagtailnews.resdigita.com> |
-| Qualification News Admin | <https://wagtailnews.resdigita.com/admin> |
-
-| Username | Password |
-| ---  | --- |
-| admin | password |
 
 ## Table of Contents
 
@@ -39,3 +26,18 @@ Here is our documentation
 ## Version check
 
 There may have been desynchornisation of git on different environments. Maybe we should have a version and installation check. 
+
+## Web access
+
+| Site | URL |
+| ---  | --- |
+| Qualification | <https://wagtail.resdigita.com> |
+| Localhost | <http://localhost:8000> |
+| Qualification Admin | <https://wagtail.resdigita.com/admin> |
+| Localhost Admin | <http://localhost:8000/admin> |
+| Qualification News | <https://wagtailnews.resdigita.com> |
+| Qualification News Admin | <https://wagtailnews.resdigita.com/admin> |
+
+| Username | Password |
+| ---  | --- |
+| admin | password |
