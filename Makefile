@@ -30,23 +30,23 @@ collectstatic:
 	./venv/bin/python ./manage.py collectstatic --noinput
 
 # From https://tailwindcss.com/docs/installation/tailwind-cli
-tailwindexe:
+tailwind-install-exe:
 	wget https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64 
 	mv tailwindcss-linux-x64 venv/bin/tailwindcss
 	chmod +x venv/bin/tailwindcss
 
 # From https://tailwindcss.com/docs/installation/tailwind-cli
-tailwindnpm:
+tailwind-install:
 	npm install tailwindcss @tailwindcss/cli
 
 # From https://tailwindcss.com/docs/installation/tailwind-cli
-tailwindcompile:
+tailwind-compile:
 	npx @tailwindcss/cli -i ./tailwind/src/input.css -o ./wagtailresdigitacom/static/css/tailwind.css -m
 
-tailwindcompilemax:
+tailwind-compilemax:
 	npx @tailwindcss/cli -i ./tailwind/src/input.css -o ./wagtailresdigitacom/static/css/tailwind.css 
 
-tailwindwatch:
+tailwind-watch:
 	npx @tailwindcss/cli -i ./tailwind/src/input.css -o ./wagtailresdigitacom/static/css/tailwind.css --watch
 
 fixtures-dump-test-initial:
