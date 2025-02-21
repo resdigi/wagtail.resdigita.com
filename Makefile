@@ -51,7 +51,7 @@ tailwind-watch:
 
 fixtures-dump-test-initial:
 	rm fixtures/*.json
-	./venv/bin/python manage.py dumpdata  --natural-foreign wagtailcore.Locale	wagtailcore.Revision	wagtailcore.Page	wagtailcore.Site wagtailimages.Image 	wagtaildocs.Document 	base 	taggit 	blog 	project 	home 	wagtailresdigitacom  wagtailmenus > fixtures/test-initial.json
+	./venv/bin/python manage.py dumpdata  --natural-foreign wagtailcore.Locale wagtailcore.Revision wagtailcore.Page wagtailcore.Site wagtailimages.Image  wagtaildocs.Document base taggit blog project home wagtailresdigitacom wagtailmenus > fixtures/test-initial.json 
 	mkdir -p fixtures/media/images
 	mkdir -p fixtures/media/original_images
 	cp -a fixtures/media/images/* media/images
