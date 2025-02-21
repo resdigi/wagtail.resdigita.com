@@ -91,6 +91,8 @@ TEMPLATES = [
     },
 ]
 
+SILENCED_SYSTEM_CHECKS = ["wagtailadmin.W002"] # https://github.com/jazzband/wagtailmenus/issues/464
+
 WSGI_APPLICATION = "wagtailresdigitacom.wsgi.application"
 
 
