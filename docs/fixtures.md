@@ -18,6 +18,8 @@ See [installation](./installation.md) documentation for setting up environment.
 
 The conformity of the installation should be perfect for this to work. It probably is a good test of the installation itself.
 
+**Absolutely necessary to have a user name "admin" for fixtures to load.**
+
 ## Loading initial fixtures on test initial data
 
 This is assuming that you just created an empty Wagtail site. You can also use `make fixtures-load-test-initial` from the root (see [Makefile](../Makefile)).

@@ -15,7 +15,7 @@ update:
 
 init:
 	make update
-	./venv/bin/python ./manage.py createsuperuser
+	./venv/bin/python ./manage.py createsuperuser --username admin
 
 runserver:
 	./venv/bin/python ./manage.py runserver
