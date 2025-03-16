@@ -1,0 +1,59 @@
+{# Load navigation_tags at the top of the file: #}
+{% load navigation_tags i18n %}
+
+
+
+
+<div class="mx-auto max-w-screen-lg px-3 py-6">
+    {% comment %} 
+  <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+    <div class="sm:w-7/12">
+      <div class="text-3xl font-bold">
+        Subscribe to my <span class="bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent">Newsletters</span>
+      </div>
+      <p class="mt-3 text-gray-300">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
+        esse non molestias eos excepturi, inventore atque cupiditate.
+      </p>
+    </div>
+    <div class="w-full sm:w-5/12">
+      <formform>
+      </div>
+    </div>
+  </div> class="flex rounded-full bg-slate-800 px-4 py-2 focus-within:ring-2 focus-within:ring-cyan-600 hover:ring-2 hover:ring-cyan-600">
+        <input class="w-full appearance-none bg-slate-800 focus:outline-none" />
+        <button class="ml-2 shrink-0 rounded-full bg-gradient-to-br from-sky-500 to-cyan-400 px-3 py-1 text-sm font-medium hover:from-sky-700 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-600/50"
+                type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  {% endcomment %}
+  
+</div> 
+
+
+
+ <div class="mx-auto max-w-screen-lg px-3 py-6">
+  <div class="border-t border-gray-600 pt-5 flex justify-between">
+    <div class="text-sm text-gray-200">
+        {% get_footer_text %}
+    </div>
+    <div class="text-sm text-gray-200">
+        {% comment %} 
+      © Copyright <!-- -->2022<!-- --> by <!-- -->Astro boilerplate<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline"
+    href="https://creativedesignsguru.com"
+    target="_blank"
+    rel="noopener noreferrer">CreativeDesignsGuru</a>.
+    {% endcomment %}
+         {# Add footer_text: #}
+    {% include "includes/socialmedia.html" %}
+    
+    </div>
+  </div>
+</div> 
+
+{% comment %} 
+<footer>
+    <p>Built with Wagtail</p> 
+</footer>
+{% endcomment %}

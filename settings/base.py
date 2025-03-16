@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 
@@ -24,11 +24,9 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    "wagtailresdigitacom",
-    "home",
-    "search",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
+    "wagtail.contrib.settings",
     "wagtail.embeds",
     "wagtail.sites",
     "wagtail.users",
@@ -39,8 +37,8 @@ INSTALLED_APPS = [
     "wagtail.admin",
     'wagtail.locales',  # Optinal Wagtial locale management UI
     "wagtail.contrib.simple_translation",
-    "wagtail",
     "modelcluster",
+    "wagtail",
     "taggit",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -48,6 +46,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'wagtail_modeladmin',          # if Wagtail >=5.1; Don't repeat if it's there already
+    'wagtailmenus',
+    "wagtailresdigitacom",
+    "base",
+    "home",
+    "blog",
+    "project",
+    "search",
 ]
 
 MIDDLEWARE = [
@@ -62,7 +68,7 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware', # For automatic language prefix
 ]
 
-ROOT_URLCONF = "wagtailresdigitacom.urls"
+ROOT_URLCONF = "settings.urls"
 
 TEMPLATES = [
     {
@@ -78,12 +84,16 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 'django.template.context_processors.i18n',
+                'wagtail.contrib.settings.context_processors.settings',
+                'wagtailmenus.context_processors.wagtailmenus',
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = "wagtailresdigitacom.wsgi.application"
+SILENCED_SYSTEM_CHECKS = ["wagtailadmin.W002"] # https://github.com/jazzband/wagtailmenus/issues/464
+
+WSGI_APPLICATION = "settings.wsgi.application"
 
 
 # Database
@@ -147,7 +157,7 @@ STATICFILES_FINDERS = [
 ]
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, "static"),
+    os.path.join(PROJECT_DIR, "wagtailresdigitacom/static"),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")

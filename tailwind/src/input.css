@@ -1,0 +1,13 @@
+ @import "tailwindcss";
+
+ @layer utilities {
+     .tag-web {
+         color: var(--color-fuchsia-900);
+         background: var(--color-fuchsia-400);
+     }
+
+     .tag-ia {
+         color: var(--color-lime-900);
+         background-color: var(--color-lime-400);
+     }
+ }

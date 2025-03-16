@@ -1,8 +1,7 @@
-{% load static wagtailcore_tags wagtailuserbar %}
-{% load i18n %}
+{% load static wagtailcore_tags %}
 
 <!DOCTYPE html>
-<html lang="">
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
         <title>
@@ -24,32 +23,36 @@
         <base target="_blank">
         {% endif %}
 
+        {# Add supported color schemes: #}
+        <meta name="color-scheme" content="light dark">
+
+        {# Add a favicon with inline SVG: #}
+        <link rel="icon" href="{% static 'images/square-boule.svg' %}"/>
+
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/wagtailresdigitacom.css' %}">
+        <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+        {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/wagtailresdigitacom.css' %}"> {% endcomment %}
 
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %}
+    <body class="{% block body_class %}{% endblock %} bg-slate-900 text-gray-100">
+        {% include "includes/header.html" %}
 
-        <nav>
-        {% for language_code, language_name in LANGUAGES %}
-            {% get_language_info for language_code as lang %}
+        {# Add a unique identifier: #}
+        {# Wrap your block content  within a <main> HTML5 tag: #}
+        {% comment %} <main id="main"> {% endcomment %}
+            <div class="mx-auto max-w-screen-lg px-3 py-6">
+            {% block content %}{% endblock %}
+            </div>
+        {% comment %} </main> {% endcomment %}
 
-            {% language language_code %}
-                <a href="{% pageurl page.localized %}" rel="alternate" hreflang="{{ language_code }}">
-                    {{ lang.name_local }}
-                </a>
-            {% endlanguage %}
-        {% endfor %}
-        </nav>
-
-        {% block content %}{% endblock %}
+        {% include "includes/footer.html" %}
 
         {# Global javascript #}
+
         <script type="text/javascript" src="{% static 'js/wagtailresdigitacom.js' %}"></script>
 
         {% block extra_js %}
@@ -57,3 +60,5 @@
         {% endblock %}
     </body>
 </html>
+
+
