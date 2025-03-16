@@ -1,5 +1,5 @@
 """
-WSGI config for wagtailresdigitacom project.
+WSGI config for resdigita project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

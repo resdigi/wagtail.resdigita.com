@@ -34,7 +34,7 @@ and don't forget the media files
 
 This is assuming the website data is coherent with initial test data and is not running. You can also use `make fixtures-dump-test-initial` from the root (see [Makefile](../Makefile)).
 
-`./venv/bin/python manage.py dumpdata  --natural-foreign wagtailcore.Locale wagtailcore.Revision wagtailcore.Page wagtailcore.Site wagtailimages.Image  wagtaildocs.Document  base  taggit  blog  project  home  wagtailresdigitacom  wagtailmenus > fixtures/test-initial.json`
+`./venv/bin/python manage.py dumpdata  --natural-foreign wagtailcore.Locale wagtailcore.Revision wagtailcore.Page wagtailcore.Site wagtailimages.Image  wagtaildocs.Document  base  taggit  blog  project  home  resdigita  wagtailmenus > fixtures/test-initial.json`
 
 and don't forget the media files.
 

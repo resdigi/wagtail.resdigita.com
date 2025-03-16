@@ -4,7 +4,7 @@ Wagtail Website for ResDigita.com
 
 https://github.com/resdigi/wagtail.resdigita.com
 
-The app name is `wagtailresdigitacom`. 
+The app name is `resdigita`. 
 
 https://task.lesgrandsvoisins.com/projects/62
 
@@ -27,7 +27,7 @@ Here is our documentation
 
 ## Change of settings location (and urls.py and wsgi.py)
 
-`settings` does not need to be in `wagtailresdigitacom` and is therefor at the root. `wsgi.py` nor `urls.py` neither, and are in the root settings folder. Other referencing parts of the application (`manage.py`, Gunicorn and `Dockerfile` mainly) have been adjusted accordingly.
+`settings` does not need to be in `resdigita` and is therefor at the root. `wsgi.py` nor `urls.py` neither, and are in the root settings folder. Other referencing parts of the application (`manage.py`, Gunicorn and `Dockerfile` mainly) have been adjusted accordingly.
 
 ## Version check
 

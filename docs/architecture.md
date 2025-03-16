@@ -12,7 +12,7 @@ By default, I use the sqlite database engine until we integrate SSO with key.res
 ## Thoughts about developing strategy
 
 Wagtail, as a Django app, integrates well with vanilla Django. As such, maybe let's develop our custom parts as Django apps without necessarily depending on 
-Wagtail as in `wagtailresdigitacom`?
+Wagtail as in `resdigita`?
 
 Here is a documentation page from Wagtail showing how to integrate Wagtail into an existing Django app, although our strategy may be to integrate distinct Django apps into Wagtail:
 

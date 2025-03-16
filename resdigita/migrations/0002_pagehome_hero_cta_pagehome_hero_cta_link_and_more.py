@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('wagtailcore', '0094_alter_page_locale'),
-        ('wagtailresdigitacom', '0001_initial'),
+        ('resdigita', '0001_initial'),
     ]
 
     operations = [

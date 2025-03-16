@@ -22,7 +22,7 @@ Not sure about `webpack.config.js`, maybe something to do with using the website
 
 I don't use `fly.toml`.
 
-I don't use `gunicorn.conf.py` and configure gunicorn differently. `/home/wagtail/wagtail.resdigita.com/venv/bin/gunicorn --env WAGTAIL_ENV='production' --access-logfile /var/log/wagtail/wagtail-resdigita-com-access.log --error-logfile /var/log/wagtail/wagtail-resdigita-com-error.log --chdir /home/wagtail/wagtail.resdigita.com --workers 12 --bind 0.0.0.0:8902 wagtailresdigitacom.wsgi:application`
+I don't use `gunicorn.conf.py` and configure gunicorn differently. `/home/wagtail/wagtail.resdigita.com/venv/bin/gunicorn --env WAGTAIL_ENV='production' --access-logfile /var/log/wagtail/wagtail-resdigita-com-access.log --error-logfile /var/log/wagtail/wagtail-resdigita-com-error.log --chdir /home/wagtail/wagtail.resdigita.com --workers 12 --bind 0.0.0.0:8902 resdigita.wsgi:application`
 
 `Dockerfile` looks nice, but I don't use it either.
 
@@ -34,5 +34,5 @@ This came with wagtail-news-template. It seems to require `npm install` and  `np
 
 Tailwind seems to take static files from `static_src` and put them into `static_compiled`. Django then takes `static_compiled` and puts it in to `static`.
 
-For now, all static assets are at the root level. It would seem cleaner to me to have everything in the `wagtailresdigitacom` app.
+For now, all static assets are at the root level. It would seem cleaner to me to have everything in the `resdigita` app.
 
