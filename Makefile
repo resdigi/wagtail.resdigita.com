@@ -13,9 +13,12 @@ update:
 	./venv/bin/python ./manage.py migrate
 	./venv/bin/python ./manage.py collectstatic --noinput
 
+superuser:
+	./venv/bin/python ./manage.py createsuperuser --username admin
+
 init:
 	make update
-	./venv/bin/python ./manage.py createsuperuser --username admin
+	make superuser
 
 runserver:
 	./venv/bin/python ./manage.py runserver
