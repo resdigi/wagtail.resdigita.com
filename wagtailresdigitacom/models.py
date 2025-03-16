@@ -10,6 +10,9 @@ from project.models import ProjectPage
 
 # from wagtail.contrib.settings.models import BaseGenericSetting
 
+
+
+
 class PageHome(Page):
     content = RichTextField(
         blank=True,
