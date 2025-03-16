@@ -54,6 +54,7 @@ ifeq (,$(VENV_EXISTS))
 	make initvenv
 endif
 	make requirements
+	make superuser
 
 requirements:
 	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/pip install --upgrade pip
@@ -61,7 +62,7 @@ requirements:
 	make -C ./resdigita requirements
 
 superuser:
-	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python manage.py createsuperuser --username admin
+	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python manage.py createsuperuser --username admin --email admin@resdigita.com
 
 makemigrations:
 	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python ./manage.py makemigrations
