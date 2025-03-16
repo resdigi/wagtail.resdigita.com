@@ -13,9 +13,72 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+import dj_database_url  # Pour un syntaxe différent de base de données
+from dotenv import load_dotenv  # Pour les variables d'.env
+
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
+
+# Prendre les variables d'environnement
+load_dotenv()
+
+# Check to see if basic variables needed are defined
+
+# REQUIRED = ["DATABASE_URL", "SITE_NAME", "SECRET_KEY", "WAGTAILTRANSFER_SECRET_KEY", "HOST_URL"]
+REQUIRED = ["ALLOWED_HOSTS", "SECRET_KEY",]
+
+needs_required = []
+for i in REQUIRED:
+    if not os.getenv(i) != "":
+        needs_required.append(i)
+
+if needs_required != []:
+    raise ValueError("Merci de mettre les variables suivantes dans .env: %s" % ", ".join(needs_required))
+
+DEBUG = True if os.getenv("DEBUG") == "True" else False
+DEBUG_TOOLBAR = True if os.getenv("DEBUG_TOOLBAR") == "True" else False
+
+HOST_URL = os.getenv("HOST_URL", "localhost")
+
+# For AllAuth
+SITE_ID = 1
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1, localhost").replace(" ", "").split(",")
+CSRF_TRUSTED_ORIGINS = []
+for host in ALLOWED_HOSTS:
+    CSRF_TRUSTED_ORIGINS.append("https://" + host)
+    
+
+SOCIALACCOUNT_PROVIDERS = {
+    "openid_connect": {
+        "OAUTH_PKCE_ENABLED": True,
+        # 'SOCIALACCOUNT_ONLY': True,
+        "APPS": [
+            {
+                "provider_id": "key-resdigita-com",
+                "name": "key.resdigita.com",
+                "client_id": os.getenv("OPENID_NAME"),
+                "secret": os.getenv("OPENID_SECRET"),
+                "settings": {
+                    "server_url": os.getenv("OPENID_URL"),
+                    # Optional token endpoint authentication method.
+                    # May be one of "client_secret_basic", "client_secret_post"
+                    # If omitted, a method from the the server's
+                    # token auth methods list is used
+                    "token_auth_method": "client_secret_post",
+                },
+            },
+        ],
+    }
+}
+ACCOUNT_LOGIN_METHODS = {'username'}
+SOCIALACCOUNT_AUTO_SIGNUP = True
+ACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_ONLY = True
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -24,6 +87,10 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.openid_connect",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.contrib.settings",
@@ -54,6 +121,7 @@ INSTALLED_APPS = [
     "blog",
     "project",
     "search",
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +135,19 @@ MIDDLEWARE = [
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
     'django.middleware.locale.LocaleMiddleware', # For automatic language prefix
 ]
+
+
+MIDDLEWARE += [
+    "allauth.account.middleware.AccountMiddleware",
+]
+
+
+# if DEBUG and "localhost" in HOST_URL:
+if DEBUG_TOOLBAR:
+    MIDDLEWARE += [
+        "debug_toolbar.middleware.DebugToolbarMiddleware",
+    ]
+
 
 ROOT_URLCONF = "settings.urls"
 
@@ -99,12 +180,34 @@ WSGI_APPLICATION = "settings.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///%s/db.sqlite3" % BASE_DIR)  # Lire depuis .env
+
+print(DATABASE_URL)
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
+    "default": dj_database_url.parse(
+        DATABASE_URL,
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
+
+# if DATABASE_URL:
+#     DATABASES = {
+#         "default": dj_database_url.parse(
+#             DATABASE_URL,
+#             conn_max_age=600,
+#             conn_health_checks=True,
+#         )
+#     }
+# else:
+#     raise ValueError("Please set the DATABASE_URL environment variable")
+#     # DATABASES = {
+#     #     "default": {
+#     #         "ENGINE": "django.db.backends.sqlite3",
+#     #         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+#     #     }
+#     # }
 
 
 # Password validation
@@ -137,7 +240,7 @@ WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
 ]
 
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Europe/Paris"
 
 USE_I18N = True
 WAGTAIL_I18N_ENABLED = True
@@ -154,7 +257,10 @@ USE_TZ = True
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    'sass_processor.finders.CssFinder',
 ]
+
+SASS_PROCESSOR_AUTO_INCLUDE = True
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "wagtailresdigitacom/static"),
