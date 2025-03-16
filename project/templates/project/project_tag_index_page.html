@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+
+    {% if request.GET.tag %}
+        <h4>Showing projects tagged "{{ request.GET.tag }}"</h4>
+    {% endif %}
+
+    {% for projectpage in projectpages %}
+
+          <p>
+              <strong><a href="{% pageurl projectpage %}">{{ projectpage.title }}</a></strong><br />
+              <small>Revised: {{ projectpage.latest_revision_created_at }}</small><br />
+          </p>
+
+    {% empty %}
+        No pages found with that tag.
+    {% endfor %}
+
+{% endblock %}
