@@ -45,7 +45,6 @@ sass:
 	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python manage.py compilescss
 
 init:
-	make -C $(PROJECT_PATH)/resdigita init
 ifeq (,$(ENV_EXISTS))
 	make initenv
 	$(error .env required at $(ENV_PATH)  )
@@ -54,7 +53,9 @@ ifeq (,$(VENV_EXISTS))
 	make initvenv
 endif
 	make requirements
+	make migrate
 	make superuser
+	make -C $(PROJECT_PATH)/resdigita init
 
 requirements:
 	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/pip install --upgrade pip

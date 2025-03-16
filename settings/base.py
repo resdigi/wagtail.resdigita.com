@@ -117,7 +117,7 @@ INSTALLED_APPS = [
     'wagtailmenus',
     "resdigita",
     "base",
-    "home",
+    # "home",
     "blog",
     "project",
     "search",

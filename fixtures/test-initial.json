@@ -2004,7 +2004,7 @@
     }
 }, {
     "model": "wagtailcore.site",
-    "pk": 2,
+    "pk": 1,
     "fields": {
         "hostname": "localhost",
         "port": 80,
