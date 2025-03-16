@@ -13,4 +13,15 @@
 
     <p><a href="{{ page.get_parent.url }}">Return to projects</a></p>
 
+    {% with tags=page.tags.all %}
+    {% if tags %}
+        <div class="tags">
+            <h3>Tags</h3>
+            {% for tag in tags %}
+                <a href="{% slugurl 'project-tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
 {% endblock %}
