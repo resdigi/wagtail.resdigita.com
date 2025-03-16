@@ -103,6 +103,13 @@
           <div class="mt-2 text-sm">
             {{ item.intro }}
           </div>
+          {% with tags=item.tags.all %}
+          {% if tags %}
+            {% for tag in tags %}
+            <div class="rounded-md px-2 py-1 text-xs font-semibold bg-lime-400 text-lime-900 tag-{{ tag.slug }}">{{ tag }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
         </div>
       </div>
     </a>

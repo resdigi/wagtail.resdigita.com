@@ -9,6 +9,86 @@ Here is the stack:
 
 By default, I use the sqlite database engine until we integrate SSO with key.resdigita.com. 
 
+
+## Folders Diagram
+
+```mermaid
+---
+title: wagtail.resdigita.com
+---
+flowchart LR
+
+base
+blog
+docs
+fixtures
+home
+locale
+media
+project
+resdigita
+search
+settings -- apps --> base & blog & home & project & resdigita & search
+base & blog & home & project & resdigita -- static --> static
+staticfiles --> static
+static
+staticfiles
+
+```
+
+## Class Diagram
+
+```mermaid
+---
+title: wagtail.resdigita.com
+---
+classDiagram
+  class settings
+  
+  namespace misc {
+    class fixtures
+    class docs
+  }
+  namespace devtime_data {
+    class locale
+    class staticfiles
+  }
+  namespace runtime_data {
+    class media
+    class static
+  }
+  
+
+  namespace apps {
+    class base {
+        +setting NavigationSettings
+        +snippet FooterText
+        +FormPage()
+    }
+    class blog {
+        +snippet Author
+        +BlogPage()
+        +BlogIndexPage()
+        +BlogTagIndexPage()
+    }
+    class home {
+        +HomePage()
+    }
+    class project {
+        +ProjectPage()
+        +ProjectIndexPage()
+        +ProjectTagIndexPage()
+    }
+    class resdigita {
+        +PageHome()
+    }
+    class search {
+        +search()
+    }
+  }
+  
+```
+
 ## Thoughts about developing strategy
 
 Wagtail, as a Django app, integrates well with vanilla Django. As such, maybe let's develop our custom parts as Django apps without necessarily depending on 
