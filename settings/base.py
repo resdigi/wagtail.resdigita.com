@@ -183,8 +183,6 @@ WSGI_APPLICATION = "settings.wsgi.application"
 
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///%s/db.sqlite3" % BASE_DIR)  # Lire depuis .env
 
-print(DATABASE_URL)
-
 DATABASES = {
     "default": dj_database_url.parse(
         DATABASE_URL,

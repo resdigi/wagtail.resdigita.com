@@ -41,6 +41,7 @@ messages:
 	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python manage.py makemessages -l fr -l en --ignore=manage.py --ignore=medias --ignore=setup.py --ignore=staticfiles --ignore=templates
 
 sass:
+	make -C $(PROJECT_PATH)/resdigita/tailwind install
 	make -C $(PROJECT_PATH)/resdigita/tailwind compile
 	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python manage.py compilescss
 
@@ -71,12 +72,15 @@ makemigrations:
 migrate:
 	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python ./manage.py migrate
 
-update: 
-	make sass
+produpdate:
 	make messages
 	make collectstatic
-	make makemigrations
 	make migrate
+
+update: 
+	make sass
+	make makemigrations
+	make produpdate
 
 runserver:
 	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python ./manage.py runserver
