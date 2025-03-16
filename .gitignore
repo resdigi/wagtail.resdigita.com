@@ -3,8 +3,8 @@
 #####################################################################################
 # I put the virtual environment in a subfolder ./venv
 venv
-# Media contents are instance-specific
-media/*
+# actually, I changed my mind, .venv
+.venv
 # stash is for temporary stuff
 stash/*
 #####################################################################################
@@ -19,7 +19,7 @@ __pycache__
 /venv/
 /.venv/
 /tmp/
-/static/
+# /static/ # There is a .gitignore in static now
 /.vagrant/
 /Vagrantfile.local
 node_modules/
