@@ -73,13 +73,13 @@ migrate:
 	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python ./manage.py migrate
 
 produpdate:
-	make messages
 	make collectstatic
 	make migrate
 
 update: 
 	make sass
 	make makemigrations
+	make messages
 	make produpdate
 
 runserver:
