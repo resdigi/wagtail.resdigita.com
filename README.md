@@ -18,12 +18,14 @@ https://wagtail.resdigita.com/admin/
 
 Here is our documentation
 
-  - [Installation](./docs/installation.md)
-  - [Fixtures (mainly initial data for now)](./docs/fixtures.md)
-  - [Architecture and thoughts about workflow](./docs/architecture.md)
-  - [Nixos in production](./docs/nixos.md)
-  - [Starter template standard documentation](./docs/starter.md)
-  - [Starter-news template we are not using](./docs/starter-news.md)
+  - [Installation](./doc/installation.md)
+  - [Fixtures (mainly initial data for now)](./doc/fixtures.md)
+  - [Git (tips on our usage)](./doc/git.md)
+  - [Connected](./doc/connected.md)
+  - [Architecture and thoughts about workflow](./doc/architecture.md)
+  - [Nixos in production](./doc/nixos.md)
+  - [Starter template standard documentation](./doc/starter.md)
+  - [Starter-news template we are not using](./doc/starter-news.md)
 
 ## Change of settings location (and urls.py and wsgi.py)
 
