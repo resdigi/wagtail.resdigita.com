@@ -1,6 +1,8 @@
-# Folder 'docs'
+# Folder 'staticfiles'
 
-This has the documentation for wagtail.resdigita.com. See [../README.md](../README.md) for a more concise introduction.
+This folder has static assets that are not in ./resdigita/static/ or in ./*/static/ where ./*/ are the referenced applications. It is an extra folder for static distribution-time files added to the `collectstatic` process. You may overload stuff here used by other apps, I think.
+
+
 
 ```mermaid
 ---
