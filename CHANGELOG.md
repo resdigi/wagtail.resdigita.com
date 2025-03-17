@@ -25,7 +25,7 @@ When installing this version, one should consider doing a new install from scrat
 - Open Connect: installed in ./settings/signals.py and ./resdigita/apps.py with .env variables as well
 - API consumption from ghost.wagtail.com in ./resdigita/services.py. Should pull info, but not yet used on site.
 - ./project/: Added tags and adjusted fixtures and ./resdigita/ accordingly
-- ./docs/: renamed to [./doc/](../doc/)
+- ./docs/: renamed to [./doc/](./doc/)
 - ./example.env: Added example .env file as multiple new variables are now required
 - started creating tags
 - Database: now configuring database from url in .env
