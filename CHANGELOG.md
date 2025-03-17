@@ -2,6 +2,8 @@
 
 ## [0.1.1] - In progress
 
+- Documentations updates
+
 ## [0.1.0] - 2025-03-17
 
 When installing this version, one should consider doing a new install from scratch.
