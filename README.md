@@ -14,6 +14,8 @@ https://wagtail.resdigita.com/
 
 https://wagtail.resdigita.com/admin/
 
+https://wagtail.resdigita.com/accounts/oidc/key-resdigita-com/login/
+
 ## Table of Contents
 
 Here is our documentation
