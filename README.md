@@ -23,7 +23,6 @@ Here is our documentation
   - [Architecture and thoughts about workflow](./doc/architecture.md)
   - [Nixos in production](./doc/nixos.md)
   - [Starter template standard documentation](./doc/starter.md)
-  - [Starter-news template we are not using](./doc/starter-news.md)
 
 ## Web access
 
