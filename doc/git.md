@@ -18,7 +18,7 @@ After pulling from another branch, don't forget `git push`
 
 ## Version ckeck
 
-There may have been desynchornisation of git on different environments. Maybe we should have a version and installation check. 
+There may have been desynchronization of git on different environments. Maybe we should have a version and installation check. 
 
 ## Using Pull Requests
 

@@ -1,17 +1,18 @@
-# Resdigit@ website recreation in Wagtail
+# Resdigita website recreation in Wagtail
 
 Wagtail Website for ResDigita.com
 
-https://github.com/resdigi/wagtail.resdigita.com
+<https://github.com/resdigi/wagtail.resdigita.com>
 
-The app name is `resdigita`. 
+The main app name is `resdigita` and uses other apps `search`, `blog`, `project`, `base` and the python module `settings`. It makes use of gnumake with a Makefile. `resdigita` has a tailwind component to it accessible via the Makefiles, and a service to consume an external Ghost blog engine. 
 
-https://task.lesgrandsvoisins.com/projects/62
+Here are additional resources on this project:
 
-https://mark.lesgrandsvoisins.com/resdigita
+- <https://task.lesgrandsvoisins.com/projects/62>
+- <https://mark.lesgrandsvoisins.com/resdigita>
 
 
-## Table of Contents
+## Documentation
 
 Here is our documentation
 
@@ -24,7 +25,7 @@ Here is our documentation
   - [Nixos in production](./doc/nixos.md)
   - [Starter template standard documentation](./doc/starter.md)
 
-## Web access
+## Web access to the application
 
 | Site | URL |
 | ---  | --- |
