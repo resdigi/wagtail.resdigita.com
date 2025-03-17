@@ -24,3 +24,9 @@ When installing this version, one should consider doing a new install from scrat
 - Database: now configuring database from url in .env
 - Tailwind: Using tailwind in ./resdigita with subfolder tailwind and corresponding makefile
 - OICD: Redirects required in config (web front-end) for /fr/accounts/profile/ and /en/accounts/profile/ to home pages
+
+## [0.0.2] - 2025-01-20
+
+## [0.0.1] - 2025-01-20
+
+## [0.0.1-notemplate] - 2025-01-20
