@@ -1,6 +1,6 @@
 # Changelog
 
-See [common-changelog](https://github.com/vweevers/common-changelog) for formatting conventions.
+## [0.1.1] - In progress
 
 ## [0.1.0] - 2025-03-17
 
@@ -24,6 +24,8 @@ When installing this version, one should consider doing a new install from scrat
 - Database: now configuring database from url in .env
 - Tailwind: Using tailwind in ./resdigita with subfolder tailwind and corresponding makefile
 - OICD: Redirects required in config (web front-end) for /fr/accounts/profile/ and /en/accounts/profile/ to home pages
+- Changelog: See [common-changelog](https://github.com/vweevers/common-changelog) for formatting conventions.
+- Added README.md files to most folders to explain what they are about
 
 ## [0.0.2] - 2025-01-20
 
