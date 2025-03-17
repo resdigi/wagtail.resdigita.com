@@ -28,6 +28,8 @@ When installing this version, one should consider doing a new install from scrat
 - OICD: Redirects required in config (web front-end) for /fr/accounts/profile/ and /en/accounts/profile/ to home pages
 - Changelog: See [common-changelog](https://github.com/vweevers/common-changelog) for formatting conventions.
 - Added README.md files to most folders to explain what they are about
+- Previously: Change of settings location (and urls.py and wsgi.py): `settings` does not need to be in `resdigita` and is therefor at the root. `wsgi.py` nor `urls.py` neither, and are in the root settings folder. Other referencing parts of the application (`manage.py`, Gunicorn and `Dockerfile` mainly) have been adjusted accordingly.
+- Previously: Retired "Qualification News"
 
 ## [0.0.2] - 2025-01-20
 

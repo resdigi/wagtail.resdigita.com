@@ -16,6 +16,10 @@ There might be conflicts to resolve and test. If so, `git add *` when done.
 
 After pulling from another branch, don't forget `git push`
 
+## Version ckeck
+
+There may have been desynchornisation of git on different environments. Maybe we should have a version and installation check. 
+
 ## Using Pull Requests
 
 I am not really up to speed on this approach. 
