@@ -5,6 +5,7 @@ This has the documentation for wagtail.resdigita.com. See [../README.md](../READ
   - [Installation](./installation.md)
   - [Fixtures (mainly initial data for now)](./fixtures.md)
   - [Git (tips on our usage)](./git.md)
+  - [CHANGELOG](../CHANGELOG.md)
   - [Connected](./connected.md)
   - [Architecture and thoughts about workflow](./architecture.md)
   - [Nixos in production](./nixos.md)
