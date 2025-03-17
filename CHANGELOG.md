@@ -17,7 +17,8 @@ When installing this version, one should consider doing a new install from scrat
 - Makefile: Included "if" statements to detect venv (python venv in ./.venv/) end env (file ./.env) required for most installations
 - Makefile: Added makefile to ./resdigita/Makefile and ./resdigita/tailwind/Makefile
 - ./wagtailresdigitacom: renamed to ./resdigita and app renamed to resdigita
-- Makefile: commands are init (calling initenv, initvenv), messages, sass (only locally), requirements, superuser, makemigrations, migrate, produpdate (without sass call notably), update, runserver, start (legacy synonyme for runserver), secretkey, collectstatic, tailwind-install-bin-linux, tailwind-install, tailwind-compile, tailwind-compilemax, tailwind-watch, fixtures-dump-test-initial, fixtures-load-test-initial, - Open Connect: installed in ./settings/signals.py and ./resdigita/apps.py with .env variables as well
+- Makefile: commands are init (calling initenv, initvenv), messages, sass (only locally), requirements, superuser, makemigrations, migrate, produpdate (without sass call notably), update, runserver, start (legacy synonyme for runserver), secretkey, collectstatic, tailwind-install-bin-linux, tailwind-install, tailwind-compile, tailwind-compilemax, tailwind-watch, fixtures-dump-test-initial, fixtures-load-test-initial, 
+- Open Connect: installed in ./settings/signals.py and ./resdigita/apps.py with .env variables as well
 - API consumption from ghost.wagtail.com in ./resdigita/services.py. Should pull info, but not yet used on site.
 - ./project/: Added tags and adjusted fixtures and ./resdigita/ accordingly
 - ./docs/: renamed to ./doc/
