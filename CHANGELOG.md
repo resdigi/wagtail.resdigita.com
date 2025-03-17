@@ -2,7 +2,7 @@
 
 ## [0.1.1] - In progress
 
-- Documentations updates
+- Documentation updates
 
 ## [0.1.0] - 2025-03-17
 
