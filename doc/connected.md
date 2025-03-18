@@ -2,7 +2,7 @@
 
 <https://wagtail.resdigita.com>
 
-<https://ghost.resdigita.com>
+<https://publii.resdigita.com>
 
 <https://key.resdigita.com>
 
