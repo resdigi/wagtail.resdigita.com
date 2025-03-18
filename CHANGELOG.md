@@ -7,6 +7,10 @@ Wagtail Website for ResDigita.com
 ## [0.1.1] - In progress
 
 - Documentation updates
+- IMPORTANT: HOST_URL in .env file becomes HOST_NAME
+- Added DEBUG_TOOLBAR in .env
+- Added service blog posts for publii blog feed
+- Added PUBLII_FEED_URL to .env
 
 ## [0.1.0] - 2025-03-17
 

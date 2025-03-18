@@ -25,7 +25,7 @@ load_dotenv()
 
 # Check to see if basic variables needed are defined
 
-# REQUIRED = ["DATABASE_URL", "SITE_NAME", "SECRET_KEY", "WAGTAILTRANSFER_SECRET_KEY", "HOST_URL"]
+# REQUIRED = ["DATABASE_URL", "SITE_NAME", "SECRET_KEY", "WAGTAILTRANSFER_SECRET_KEY", "HOST_NAME"]
 REQUIRED = ["ALLOWED_HOSTS", "SECRET_KEY",]
 
 needs_required = []
@@ -39,7 +39,9 @@ if needs_required != []:
 DEBUG = True if os.getenv("DEBUG") == "True" else False
 DEBUG_TOOLBAR = True if os.getenv("DEBUG_TOOLBAR") == "True" else False
 
-HOST_URL = os.getenv("HOST_URL", "localhost")
+HOST_NAME = os.getenv("HOST_NAME", "localhost")
+
+PUBLII_FEED_URL = os.getenv("PUBLII_FEED_URL", "https://publii.resdigita.com/feed.json")
 
 # For AllAuth
 SITE_ID = 1
@@ -143,11 +145,15 @@ MIDDLEWARE += [
 ]
 
 
-# if DEBUG and "localhost" in HOST_URL:
+# if DEBUG and "localhost" in HOST_NAME:
 if DEBUG_TOOLBAR:
+    INSTALLED_APPS += [
+        'debug_toolbar',
+    ];
     MIDDLEWARE += [
         "debug_toolbar.middleware.DebugToolbarMiddleware",
     ]
+    INTERNAL_IPS = ["127.0.0.1", "localhost "]
 
 
 ROOT_URLCONF = "settings.urls"

@@ -8,6 +8,7 @@ from blog.models import BlogPage
 from project.models import ProjectPage
 # from base.models import NavigationSettings
 # from wagtail.contrib.settings.models import BaseGenericSetting
+from resdigita.services import get_blog_posts
 
 class PageHome(Page):
     content = RichTextField(
@@ -53,4 +54,11 @@ class PageHome(Page):
         
         context['blogpages'] = blogpages
         context['projectpages'] = projectpages
+
+        
+        context["posts"] = get_blog_posts(
+            {}
+        )
+
+
         return context

@@ -83,7 +83,7 @@ update:
 	make produpdate
 
 runserver:
-	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python ./manage.py runserver $(HOST_URL):$(HOST_PORT)
+	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python ./manage.py runserver $(HOST_NAME):$(HOST_PORT)
 
 start:
 	make runserver

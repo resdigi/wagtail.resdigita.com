@@ -1,78 +1,70 @@
 {% extends "base.html" %}
 {% load static wagtailcore_tags wagtailimages_tags wagtailsettings_tags i18n %}
-
 {% comment %} {% block body_class %}pagehome{% endblock %} {% endcomment %}
-
 {% block extra_css %}
-
-{% comment %} <link rel="stylesheet" href="{% static 'css/welcome_page.css' %}"> {% endcomment %}
-{% comment %} <link rel="stylesheet" href="{% static 'css/resdigita.css' %}"> {% endcomment %}
-
+  {% comment %} <link rel="stylesheet" href="{% static 'css/welcome_page.css' %}"> {% endcomment %}
+  {% comment %} <link rel="stylesheet" href="{% static 'css/resdigita.css' %}"> {% endcomment %}
 {% endblock extra_css %}
-
 {% block content %}
-<div class="mx-auto max-w-screen-lg px-3 py-6">
-  <div class="flex flex-col items-center md:flex-row md:justify-between md:gap-x-24">
-    <div>
-<h1 class="text-3xl font-bold">
-  {{self.title}}
-</h1>
-<p class="mt-6 text-xl leading-9">
-  {{ self.content|richtext }}
-</p>
-{% include "includes/socialmedia.html" %}
-</div>
-
-<div class="shrink-0">
-  <img class="h-60 w-60"
-       src="{% static 'images/square-boule.svg' %}"
-       alt="Resdigita Logo"
-       loading="lazy" />
-</div>
-
-</div>
-</div>
-<div class="mx-auto max-w-screen-lg px-3 py-6">
-  <div class="mb-6 text-2xl font-bold">
-    Recent <span class="bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent">Projects</span>
+  <div class="mx-auto max-w-screen-lg px-3 py-6">
+    <div class="flex flex-col items-center md:flex-row md:justify-between md:gap-x-24">
+      <div>
+        <h1 class="text-3xl font-bold">{{ self.title }}</h1>
+        <p class="mt-6 text-xl leading-9">{{ self.content|richtext }}</p>
+        {% include "includes/socialmedia.html" %}
+      </div>
+      <div class="shrink-0">
+        <img class="h-60 w-60"
+             src="{% static 'images/square-boule.svg' %}"
+             alt="Resdigita Logo"
+             loading="lazy" />
+      </div>
+    </div>
+  </div>
+  <div class="mx-auto max-w-screen-lg px-3 py-6">
+    <div class="mb-6 text-2xl font-bold">
+      <div class="flex items-baseline justify-between">
+        <div>
+          Recent <span class="bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent">Projects</span>
+        </div>
+        <div class="text-sm">
+          <a href="/projects">{% translate "View all Projects" %} →</a>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="flex flex-col gap-6">
-
     {% for item in projectpages %}
-    {% with item=item.specific %}
-    <div class="flex flex-col items-center gap-x-8 rounded-md bg-slate-800 p-3 md:flex-row">
-      <div class="shrink-0">
-        <a href="{% pageurl item %}">
-          {% image item.image fill-160x160 class="h-36 w-36 hover:translate-y-1"%}
-        </a>
-      </div>
-      <div>
-        <div class="flex flex-col items-center gap-y-2 md:flex-row">
-          <a class="hover:text-cyan-400" href="{% pageurl item %}">
-            <div class="text-xl font-semibold">{{ item.title }}</div>
-          </a>
-          <div class="ml-3 flex gap-2">
-            {% with tags=item.tags.all %}
-              {% if tags %}
-                {% for tag in tags %}
-                <div class="rounded-md px-2 py-1 text-xs font-semibold bg-lime-400 text-lime-900 tag-{{ tag.slug }}">{{ tag }}</div>
-                {% endfor %}
-              {% endif %}
-            {% endwith %}
-            {% comment %} 
+      {% with item=item.specific %}
+        <div class="flex flex-col items-center gap-x-8 rounded-md bg-slate-800 p-3 md:flex-row">
+          <div class="shrink-0">
+            <a href="{% pageurl item %}">{% image item.image fill-160x160 class="h-36 w-36 hover:translate-y-1" %}</a>
+          </div>
+          <div>
+            <div class="flex flex-col items-center gap-y-2 md:flex-row">
+              <a class="hover:text-cyan-400" href="{% pageurl item %}">
+                <div class="text-xl font-semibold">{{ item.title }}</div>
+              </a>
+              <div class="ml-3 flex gap-2">
+                {% with tags=item.tags.all %}
+                  {% if tags %}
+                    {% for tag in tags %}
+                      <div class="rounded-md px-2 py-1 text-xs font-semibold bg-lime-400 text-lime-900 tag-{{ tag.slug }}">{{ tag }}</div>
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
+                {% comment %}
             <div class="rounded-md px-2 py-1 text-xs font-semibold bg-fuchsia-400 text-fuchsia-900">Astro.js</div>
             <div class="rounded-md px-2 py-1 text-xs font-semibold bg-lime-400 text-lime-900">Web design</div>
             <div class="rounded-md px-2 py-1 text-xs font-semibold bg-sky-400 text-sky-900">Tailwind.css</div>
             <div class="rounded-md px-2 py-1 text-xs font-semibold bg-rose-400 text-rose-900">TypeScript</div>
-            {% endcomment %}
+                {% endcomment %}
+              </div>
+            </div>
+            <p class="mt-3 text-gray-400">{{ item.intro }}</p>
           </div>
-        </div> 
-        <p class="mt-3 text-gray-400">
-          {{ item.intro }}
-        </p>
-      </div>
-    </div>
-    {% endwith %}
+        </div>
+      {% endwith %}
     {% endfor %}
   </div>
 </div>
@@ -80,43 +72,69 @@
   <div class="mb-6 text-2xl font-bold">
     <div class="flex items-baseline justify-between">
       <div>
-        Recent <span class="bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent">Posts</span>
+        Our <span class="bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent">Services</span>
       </div>
       <div class="text-sm">
-        <a href="/projects">{% translate "View all Projects" %} →</a>
+        <a href="/blog">{% translate "View all Services" %} →</a>
       </div>
     </div>
   </div>
   <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-
     {% for item in blogpages %}
-    {% with item=item.specific %}
-    <a class="hover:translate-y-1"
-       href="{% pageurl item %}">
-      <div class="overflow-hidden rounded-md bg-slate-800">
-        <div class="aspect-w-3 aspect-h-2">
-          {% image item.main_image fill-160x100 loading="lazy" %}
-        </div>
-        <div class="px-3 pt-4 pb-6 text-center">
-          <h2 class="text-xl font-semibold">{{ item.title }}</h2>
-          <div class="mt-1 text-xs text-gray-400">{{ item.date }}</div>
-          <div class="mt-2 text-sm">
-            {{ item.intro }}
+      {% with item=item.specific %}
+        <a class="hover:translate-y-1" href="{% pageurl item %}">
+          <div class="overflow-hidden rounded-md bg-slate-800">
+            <div class="aspect-w-3 aspect-h-2">{% image item.main_image fill-160x100 loading="lazy" %}</div>
+            <div class="px-3 pt-4 pb-6 text-center">
+              <h2 class="text-xl font-semibold">{{ item.title }}</h2>
+              <div class="mt-1 text-xs text-gray-400">{{ item.date }}</div>
+              <div class="mt-2 text-sm">{{ item.intro }}</div>
+              {% with tags=item.tags.all %}
+                {% if tags %}
+                  {% for tag in tags %}
+                    <div class="rounded-md px-2 py-1 text-xs font-semibold bg-lime-400 text-lime-900 tag-{{ tag.slug }}">{{ tag }}</div>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+            </div>
           </div>
-          {% with tags=item.tags.all %}
-          {% if tags %}
-            {% for tag in tags %}
-            <div class="rounded-md px-2 py-1 text-xs font-semibold bg-lime-400 text-lime-900 tag-{{ tag.slug }}">{{ tag }}</div>
-            {% endfor %}
-          {% endif %}
-        {% endwith %}
+        </a>
+      {% endwith %}
+    {% endfor %}
+    <a href="/blog" class="justify-center text-center">{% translate "View All Services" %} →</a>
+  </div>
+  <div class="mx-auto max-w-screen-lg px-3 py-6">
+    <div class="mb-6 text-2xl font-bold">
+      <div class="flex items-baseline justify-between">
+        <div>
+          Recent <span class="bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent">Posts</span>
+        </div>
+        <div class="text-sm">
+          <a href="https://publii.resdigita.com">{% translate "View Blog" %} →</a>
         </div>
       </div>
-    </a>
-    {% endwith %}
-    {% endfor %}
-    <a href="/blog">{% translate "View all Posts" %} →</a>
-</div>
-</div>
-
+    </div>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {% for item in posts %}
+        <a class="hover:translate-y-1" href="{{ item.url }}">
+          <div class="overflow-hidden rounded-md bg-slate-800">
+            <div class="aspect-w-3 aspect-h-2">
+              <img src="{{ item.image }}" loading="lazy">
+            </div>
+            <div class="px-3 pt-4 pb-6 text-center">
+              <h2 class="text-xl font-semibold">{{ item.title }}</h2>
+              <div class="mt-1 text-xs text-gray-400">{{ item.date_modified }}</div>
+              <div class="mt-2 text-sm">{{ item.summary |richtext }}</div>
+              {% if item.tags %}
+                {% for tag in item.tags %}
+                  <div class="rounded-md px-2 py-1 text-xs font-semibold bg-lime-400 text-lime-900 tag-{{ tag }}">{{ tag }}</div>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+      <a href="/blog" class="justify-center text-center">{% translate "View Blog" %} →</a>
+    </div>
+  </div>
 {% endblock content %}
