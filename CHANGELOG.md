@@ -4,13 +4,18 @@ Wagtail Website for ResDigita.com
 
 <https://github.com/resdigi/wagtail.resdigita.com>
 
-## [0.1.1] - In progress
+## [0.1.1] - 205-03-19
 
 - Documentation updates
 - IMPORTANT: HOST_URL in .env file becomes HOST_NAME
-- Added DEBUG_TOOLBAR in .env
+- Debug Toolbar in InternalIPs work
+  - Added DEBUG_TOOLBAR in .env
+  - Added INTERNAL_IPS in settings/base.py
 - Added service blog posts for publii blog feed
 - Added PUBLII_FEED_URL to .env
+- Renamed Blog Posts to Services on resdigita.models.PageHome 
+- Added serice in resdigita.services for Publii post consumption
+- Added Posts from Publii to resdigita.models.PageHome 
 
 ## [0.1.0] - 2025-03-17
 
