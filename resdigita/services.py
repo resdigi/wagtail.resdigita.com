@@ -34,12 +34,11 @@ def get_blog_posts(params={}):
         os.remove(filenamedate)
         return ret
     try:
-        response = requests.get(url)
+        response = requests.get("%s" % url)
         ret = response.json()["items"]
     except requests.exceptions.RequestException as ex:
         print(ex)
         ret = []
-    # print(url)
     
     # for i in range(len(ret)):
     #     if ret[i]["feature_image"]:

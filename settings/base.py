@@ -15,6 +15,7 @@ import os
 
 import dj_database_url  # Pour un syntaxe différent de base de données
 from dotenv import load_dotenv  # Pour les variables d'.env
+from urllib.parse import urlparse
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
@@ -42,6 +43,9 @@ DEBUG_TOOLBAR = True if os.getenv("DEBUG_TOOLBAR") == "True" else False
 HOST_NAME = os.getenv("HOST_NAME", "localhost")
 
 PUBLII_FEED_URL = os.getenv("PUBLII_FEED_URL", "https://publii.resdigita.com/feed.json")
+urltest = urlparse(PUBLII_FEED_URL)
+if urltest.scheme == '':
+    PUBLII_FEED_URL = "https://publii.resdigita.com/feed.json"
 
 # For AllAuth
 SITE_ID = 1
