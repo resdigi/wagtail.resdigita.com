@@ -33,9 +33,14 @@ def get_blog_posts(params={}):
         ret = json.load(open(filenamedate))
         os.remove(filenamedate)
         return ret
-    response = requests.get(url)
+    try:
+        response = requests.get(url)
+        ret = response.json()["items"]
+    except requests.exceptions.RequestException as ex:
+        print(ex)
+        ret = []
     # print(url)
-    ret = response.json()["items"]
+    
     # for i in range(len(ret)):
     #     if ret[i]["feature_image"]:
     #         ret[i]["feature_image_1000"] = ret[i]["feature_image"].replace(
