@@ -340,15 +340,15 @@ LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "handlers": {
-        "openai_file": {
+        "log_file": {
             "level": "INFO",
             "class": "logging.FileHandler",
-            "filename": "openai.log",  # Separate log file for OpenAI calls
+            "filename": "debug.log",
         },
     },
     "loggers": {
         "openai_logger": {
-            "handlers": ["openai_file"],
+            "handlers": ["log_file"],
             "level": "INFO",
             "propagate": False,
         },

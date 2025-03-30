@@ -1,4 +1,5 @@
 import logging
+import openai
 from openai import OpenAI, OpenAIError
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -31,7 +32,6 @@ def chat_view(request):
             # )
 
             # chat_response = response['choices'][0]['message']['content'].strip() 
-
 
             client = OpenAI()
 
