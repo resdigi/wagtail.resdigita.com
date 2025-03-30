@@ -334,3 +334,25 @@ WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'tx
 
 # Open AI key
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+
+# Logging
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "openai_file": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "filename": "openai.log",  # Separate log file for OpenAI calls
+        },
+    },
+    "loggers": {
+        "openai_logger": {
+            "handlers": ["openai_file"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+}
+
+

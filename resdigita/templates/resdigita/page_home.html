@@ -5,6 +5,66 @@
   {% comment %} <link rel="stylesheet" href="{% static 'css/welcome_page.css' %}"> {% endcomment %}
   {% comment %} <link rel="stylesheet" href="{% static 'css/resdigita.css' %}"> {% endcomment %}
 {% endblock extra_css %}
+{% block extra_js %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const chatBox = document.getElementById("chat-box");
+    const chatInput = document.getElementById("chat-input");
+    const sendBtn = document.getElementById("send-btn");
+    const chatClose = document.getElementById("chat-close");
+    const chatContainer = chatBox.parentElement;
+
+    function appendMessage(sender, text) {
+        const messageElement = document.createElement("p");
+        messageElement.className = "text-sm text-gray-300 mt-2";
+        messageElement.innerHTML = `<strong>${sender}:</strong> ${text}`;
+        chatBox.appendChild(messageElement);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    sendBtn.addEventListener("click", function () {
+        const userMessage = chatInput.value.trim();
+        if (userMessage) {
+            appendMessage("You", userMessage);
+            chatInput.value = "";
+
+            // Send message to Django backend
+            fetch("{% url 'chat' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}",
+                },
+                body: JSON.stringify({ message: userMessage }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.response) {
+                    appendMessage("Bot", data.response);
+                } else {
+                    appendMessage("Bot", "Oops! Something went wrong.");
+                }
+            })
+            .catch(error => {
+                appendMessage("Bot", "Error connecting to chat.");
+            });
+        }
+    });
+
+    chatInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            sendBtn.click();
+        }
+    });
+
+    // Close chat
+    chatClose.addEventListener("click", function () {
+        chatContainer.style.display = "none";
+    });
+});
+</script>
+{% endblock extra_js %}
+
 {% block content %}
   <div class="mx-auto max-w-screen-lg px-3 py-6">
     <div class="flex flex-col items-center md:flex-row md:justify-between md:gap-x-24">
@@ -21,6 +81,10 @@
       </div>
     </div>
   </div>
+
+  {% include "includes/chat.html" %}
+  
+
   <div class="mx-auto max-w-screen-lg px-3 py-6">
     <div class="mb-6 text-2xl font-bold">
       <div class="flex items-baseline justify-between">
@@ -54,10 +118,10 @@
                   {% endif %}
                 {% endwith %}
                 {% comment %}
-            <div class="rounded-md px-2 py-1 text-xs font-semibold bg-fuchsia-400 text-fuchsia-900">Astro.js</div>
-            <div class="rounded-md px-2 py-1 text-xs font-semibold bg-lime-400 text-lime-900">Web design</div>
-            <div class="rounded-md px-2 py-1 text-xs font-semibold bg-sky-400 text-sky-900">Tailwind.css</div>
-            <div class="rounded-md px-2 py-1 text-xs font-semibold bg-rose-400 text-rose-900">TypeScript</div>
+                  <div class="rounded-md px-2 py-1 text-xs font-semibold bg-fuchsia-400 text-fuchsia-900">Astro.js</div>
+                  <div class="rounded-md px-2 py-1 text-xs font-semibold bg-lime-400 text-lime-900">Web design</div>
+                  <div class="rounded-md px-2 py-1 text-xs font-semibold bg-sky-400 text-sky-900">Tailwind.css</div>
+                  <div class="rounded-md px-2 py-1 text-xs font-semibold bg-rose-400 text-rose-900">TypeScript</div>
                 {% endcomment %}
               </div>
             </div>

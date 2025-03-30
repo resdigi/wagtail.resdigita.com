@@ -29,9 +29,8 @@ if settings.DEBUG:
     urlpatterns += debug_toolbar_urls()
 
 
-
-
 urlpatterns += i18n_patterns(
     path('search/', search_views.search, name='search'),
+    path("eliasells/", include("eliasells.urls")),  # Add this to include home app's URLs
     path("", include(wagtail_urls)),
 )
