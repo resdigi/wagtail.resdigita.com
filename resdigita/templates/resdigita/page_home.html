@@ -3,9 +3,10 @@
 {% comment %} {% block body_class %}pagehome{% endblock %} {% endcomment %}
 {% block extra_css %}
   {% comment %} <link rel="stylesheet" href="{% static 'css/welcome_page.css' %}"> {% endcomment %}
-  {% comment %} <link rel="stylesheet" href="{% static 'css/resdigita.css' %}"> {% endcomment %}
+  <link rel="stylesheet" href="{% static 'css/eliasells/eliasells.css' %}"> 
 {% endblock extra_css %}
 {% block extra_js %}
+<script src="{% static 'js/eliasells.js' %}"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const chatBox = document.getElementById("chat-box");

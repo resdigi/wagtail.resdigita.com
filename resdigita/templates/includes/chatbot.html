@@ -1,0 +1,42 @@
+{% load static i18n %}
+
+
+
+<!-- CHATBOT -->
+<div id="chatbot-container">
+    <!-- Botón circular para abrir el chatbot -->
+    <div id="chat-icon" onclick="toggleChat()">
+      <img src="{% static 'images/chatcirc.svg' %}">
+    </div>
+    <!-- Ventana del chatbot -->
+    <div id="chatbot" class="hidden">
+        <div id="chat-header">
+            <div class="chat-logo">
+                <div class="chat-title">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <div class="content-logo">
+              <img src="{% static 'images/chatbotoo.svg' %}">
+
+                            <div class="status online"></div>
+                        </div>
+                        <div class="pl-2 pr-1">
+                            <h3>Robotin</h3>
+                        </div>
+                    </div>
+                    <p class="text-center mt-2">EliasChat</p>
+                </div>
+            </div>
+        </div>
+        <div id="chat-content">
+            <!-- Mensajes dinámicos se cargarán aquí -->
+        </div>
+        <div id="chat-input">
+            <input type="text" id="user-input" placeholder="Write Here Write Now">
+            <button onclick="handleUserInput()">
+              <img src="{% static 'images/chat25.svg' %}">
+
+            </button>
+        </div>
+    </div>
+</div>
+<!-- CHATBOT -->
