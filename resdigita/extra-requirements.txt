@@ -1,6 +1,7 @@
 dj-database-url
 dj-static
 django-allauth
+django_distill
 django-compressor
 django-debug-toolbar
 django-extensions
@@ -24,4 +25,5 @@ wagtail-modeladmin
 wagtail
 wagtailmenus
 dotenv
+django-humanize
 pyjwt
