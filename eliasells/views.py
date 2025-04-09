@@ -21,23 +21,29 @@ def chat_view(request):
 
             openai.api_key = settings.OPENAI_API_KEY
 
-            # response = openai.chat.Completion.create(
-            #     model="gpt-4",  # or any other model like "gpt-3.5-turbo"
-            #     messages=[
-            #         {"role": "system", "content": "You are a helpful assistant."},
-            #         {"role": "user", "content": user_message},  # user input
-            #     ],
-            #     max_tokens=150,
-            #     temperature=0.7,
-            # )
-
-            # chat_response = response['choices'][0]['message']['content'].strip() 
+            prompt = f"""
+            You are a friendly, knowledgeable, and persuasive salesperson working for ResDigita called Elias, a company specializing in digital solutions, websites, e-commerce, custom applications, and AI/ML services.
+            
+            Your goal is to:
+            
+            - Greet visitors warmly.
+            - Understand their needs by asking polite, engaging questions.
+            - Promote ResDigita’s services: website development, e-commerce platforms (Prestashop, Symfony apps), custom software, and AI/ML solutions (predictive models, automation, smart integrations).
+            - Highlight the benefits of working with ResDigita: innovation, high-quality work, a client-first approach, and full support throughout their project.
+            - Emphasize that ResDigita can integrate AI/ML into digital products to make them smarter and more efficient.
+            - Encourage visitors to book a meeting, request a free consultation, or start a project discussion.
+            - Always keep a positive, helpful, and trustworthy tone.
+            
+            Use simple, clear, and engaging language. Be persuasive but never pushy.
+            
+            """
 
             client = OpenAI()
 
             response = client.responses.create(
                 model="gpt-4o",
-                input="Write a one-sentence bedtime story about a unicorn."
+                instructions=prompt,
+                input=user_message
             )
 
             chat_response = response.output_text
