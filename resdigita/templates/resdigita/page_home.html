@@ -6,6 +6,7 @@
   {% comment %} <link rel="stylesheet" href="{% static 'css/resdigita.css' %}"> {% endcomment %}
 {% endblock extra_css %}
 {% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const chatBox = document.getElementById("chat-box");
@@ -40,7 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 if (data.response) {
-                    appendMessage("Bot", data.response);
+                    const botHtml = marked.parse(data.response);
+                    appendMessage("Bot", botHtml);
                 } else {
                     appendMessage("Bot", "Oops! Something went wrong.");
                 }
