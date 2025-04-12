@@ -23,7 +23,9 @@ def chat_view(request):
 
             openai.api_key = settings.OPENAI_API_KEY
 
-            prompt = _("localized_gpt_prompt")
+            prompt = str(_("localized_gpt_prompt"))
+
+            openai_logger.info(f"Sending prompt to OpenAI: {prompt}")
 
             client = OpenAI()
 
