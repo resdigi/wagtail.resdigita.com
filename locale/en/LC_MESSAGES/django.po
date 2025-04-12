@@ -45,10 +45,8 @@ msgstr ""
 "never pushy."
 
 #: resdigita/templates/includes/chat.html:6
-msgid ""
-"Live <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text "
-"text-transparent'>Chat</span>"
-msgstr ""
+msgid "live_chat_title"
+msgstr "Live <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent'>Chat</span>"
 
 #: resdigita/templates/includes/chat.html:12
 msgid "localized_chat_initial_message"
