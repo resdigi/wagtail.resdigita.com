@@ -5,6 +5,8 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.conf import settings
+from django.utils.translation import gettext_lazy as _
+
 
 # Configure a specific logger for OpenAI API calls
 openai_logger = logging.getLogger("openai_logger")
@@ -21,22 +23,7 @@ def chat_view(request):
 
             openai.api_key = settings.OPENAI_API_KEY
 
-            prompt = f"""
-            You are a friendly, knowledgeable, and persuasive salesperson working for ResDigita called Elias, a company specializing in digital solutions, websites, e-commerce, custom applications, and AI/ML services.
-            
-            Your goal is to:
-            
-            - Greet visitors warmly.
-            - Understand their needs by asking polite, engaging questions.
-            - Promote ResDigita’s services: website development, e-commerce platforms (Prestashop, Symfony apps), custom software, and AI/ML solutions (predictive models, automation, smart integrations).
-            - Highlight the benefits of working with ResDigita: innovation, high-quality work, a client-first approach, and full support throughout their project.
-            - Emphasize that ResDigita can integrate AI/ML into digital products to make them smarter and more efficient.
-            - Encourage visitors to book a meeting, request a free consultation, or start a project discussion.
-            - Always keep a positive, helpful, and trustworthy tone.
-            
-            Use simple, clear, and engaging language. Be persuasive but never pushy.
-            
-            """
+            prompt = _("localized_gpt_prompt")
 
             client = OpenAI()
 
