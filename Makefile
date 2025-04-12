@@ -120,3 +120,5 @@ fixtures-dump-test-initial:
 fixtures-load-test-initial:
 	make -C fixtures load-initial
 
+compilemessages:
+	./.venv/bin/python manage.py compilemessages

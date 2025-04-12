@@ -1,3 +1,4 @@
+{% load static wagtailcore_tags i18n %}
 <div class="mx-auto max-w-screen-lg px-3 py-6">
   <div class="mb-6 text-2xl font-bold">
     <div class="flex items-baseline justify-between">
@@ -8,9 +9,7 @@
   </div>
   <div class="rounded-md bg-slate-800 p-4 text-white">
     <div id="chat-box" class="h-60 overflow-y-auto p-3 bg-gray-900 rounded-md">
-      <p class="text-sm text-gray-300">Hello and welcome to ResDigita! 👋
-        We specialize in creating beautiful websites, powerful e-commerce platforms, and smart custom applications — and we now offer AI and machine learning solutions to take your digital presence even further. 🚀
-        What project are you working on? I'd love to hear more and see how we can help!</p>
+      <p class="text-sm text-gray-300">{% translate "localized_chat_initial_message" %}</p>
     </div>
     <div class="mt-3 flex">
       <input type="text" id="chat-input" class="flex-1 p-2 text-black rounded-l-md" placeholder="Type a message...">
