@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-12 15:48+0200\n"
+"POT-Creation-Date: 2025-04-12 16:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,6 +43,62 @@ msgstr ""
 "            \n"
 "            Use simple, clear, and engaging language. Be persuasive but "
 "never pushy."
+
+#: resdigita/templates/includes/chat.html:6
+msgid ""
+"Live <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text "
+"text-transparent'>Chat</span>"
+msgstr ""
+
+#: resdigita/templates/includes/chat.html:12
+msgid "localized_chat_initial_message"
+msgstr ""
+"Hello and welcome to ResDigita! 👋 We specialize in creating beautiful "
+"websites, powerful e-commerce platforms, and smart custom applications — and "
+"we now offer AI and machine learning solutions to take your digital presence "
+"even further. 🚀 What project are you working on? I'd love to hear more and "
+"see how we can help!"
+
+#: resdigita/templates/includes/chat.html:15
+msgid "Type a message..."
+msgstr ""
+
+#: resdigita/templates/includes/chat.html:16
+msgid "Send"
+msgstr ""
+
+#: resdigita/templates/resdigita/page_home.html:97
+msgid "recent_projects_title"
+msgstr "Recent <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent'>Projects</span>"
+
+#: resdigita/templates/resdigita/page_home.html:100
+msgid "View all Projects"
+msgstr ""
+
+#: resdigita/templates/resdigita/page_home.html:145
+msgid ""
+"Our <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text "
+"text-transparent'>Services</span>"
+msgstr ""
+
+#: resdigita/templates/resdigita/page_home.html:148
+msgid "View all Services"
+msgstr ""
+
+#: resdigita/templates/resdigita/page_home.html:174
+msgid "View All Services"
+msgstr ""
+
+#: resdigita/templates/resdigita/page_home.html:180
+msgid ""
+"Recent <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text "
+"text-transparent'>Posts</span'>"
+msgstr ""
+
+#: resdigita/templates/resdigita/page_home.html:183
+#: resdigita/templates/resdigita/page_home.html:207
+msgid "View Blog"
+msgstr ""
 
 #: venv/lib/python3.13/site-packages/click/_termui_impl.py:556
 #, python-brace-format
@@ -332,6 +388,10 @@ msgstr ""
 
 #: venv/lib/python3.13/site-packages/django/contrib/sitemaps/apps.py:8
 msgid "Site Maps"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/django/contrib/staticfiles/apps.py:9
+msgid "Static Files"
 msgstr ""
 
 #: venv/lib/python3.13/site-packages/django/contrib/syndication/apps.py:7
@@ -1496,8 +1556,55 @@ msgid "“%(path)s” does not exist"
 msgstr ""
 
 #: venv/lib/python3.13/site-packages/django/views/static.py:68
+#: venv/lib/python3.13/site-packages/django/views/templates/directory_index.html:8
+#: venv/lib/python3.13/site-packages/django/views/templates/directory_index.html:11
 #, python-format
 msgid "Index of %(directory)s"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:7
+#: venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:204
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:206
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:208
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" "
+"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
+"configured any URLs."
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:217
+msgid "Django Documentation"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:218
+msgid "Topics, references, &amp; how-to’s"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:226
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:227
+msgid "Get started with Django"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:235
+msgid "Django Community"
+msgstr ""
+
+#: venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:236
+msgid "Connect, get help, or contribute"
 msgstr ""
 
 #: venv/lib/python3.13/site-packages/django_tasks/backends/database/models.py:82
@@ -1599,11 +1706,3 @@ msgid ""
 "Set the precision for numeric computations in the SASS processor. Default: "
 "settings.SASS_PRECISION."
 msgstr ""
-
-msgid "localized_chat_initial_message"
-msgstr ""
-"Hello and welcome to ResDigita! 👋 We specialize in creating beautiful "
-"websites, powerful e-commerce platforms, and smart custom applications — "
-"and we now offer AI and machine learning solutions to take your digital "
-"presence even further. 🚀 What project are you working on? I'd love to "
-"hear more and see how we can help!"
