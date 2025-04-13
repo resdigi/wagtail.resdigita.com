@@ -38,7 +38,9 @@ endif
 	$(EXEC_CMD) python -m venv $(PROJECT_PATH).venv
 
 messages:
-	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python manage.py makemessages -l fr -l en --ignore=manage.py --ignore=medias --ignore=setup.py --ignore=staticfiles --ignore=templates
+	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python manage.py makemessages -l fr -l en 
+
+# --ignore=manage.py --ignore=medias --ignore=setup.py --ignore=staticfiles --ignore=templates
 
 sass:
 	make -C $(PROJECT_PATH)/resdigita/tailwind install
@@ -119,4 +121,10 @@ fixtures-dump-test-initial:
 
 fixtures-load-test-initial:
 	make -C fixtures load-initial
+
+compilemessages:
+	./.venv/bin/python manage.py compilemessages
+
+makemessages:
+	./.venv/bin/python manage.py  makemessages -l en -l fr                                                                           
 
