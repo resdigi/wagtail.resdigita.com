@@ -37,7 +37,7 @@ msgstr ""
 
 #: resdigita/templates/includes/chat.html:6
 msgid "live_chat_title"
-msgstr "Discussion <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent'>en directe (Turring)</span>"
+msgstr "Discussion <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent'>en directe (Turing)</span>"
 
 #: resdigita/templates/includes/chat.html:12
 msgid "localized_chat_initial_message"
