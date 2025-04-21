@@ -19,7 +19,7 @@
          href="{% pageurl post %}">
         <div class="overflow-hidden rounded-md bg-slate-800">
           <div class="aspect-w-3 aspect-h-2">
-            {% if main_image %}{% image main_image fill-160x100 class="h-full w-full object-cover object-center"%}{% endif %}
+            {% if post.main_image %}{% image post.main_image fill-160x100 class="h-full w-full object-cover object-center"%}{% endif %}
           </div>
           <div class="px-3 pt-4 pb-6 text-center">
             <h2 class="text-xl font-semibold">{{ post.title }}</h2>
