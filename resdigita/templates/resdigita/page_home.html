@@ -6,8 +6,8 @@
   {% comment %} <link rel="stylesheet" href="{% static 'css/resdigita.css' %}"> {% endcomment %}
 {% endblock extra_css %}
 {% block extra_js %}
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
 document.addEventListener("DOMContentLoaded", function () {
     const chatBox = document.getElementById("chat-box");
     const chatInput = document.getElementById("chat-input");
@@ -64,9 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
         chatContainer.style.display = "none";
     });
 });
-</script>
+  </script>
 {% endblock extra_js %}
-
 {% block content %}
   <div class="mx-auto max-w-screen-lg px-3 py-6">
     <div class="flex flex-col items-center md:flex-row md:justify-between md:gap-x-24">
@@ -83,16 +82,11 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     </div>
   </div>
-
   {% include "includes/chat.html" %}
-  
-
   <div class="mx-auto max-w-screen-lg px-3 py-6">
     <div class="mb-6 text-2xl font-bold">
       <div class="flex items-baseline justify-between">
-        <div>
-          {% translate "recent_projects_title" %}
-        </div>
+        <div>{% translate "recent_projects_title" %}</div>
         <div class="text-sm">
           <a href="/projects">{% translate "View all Projects" %} →</a>
         </div>
@@ -138,10 +132,10 @@ document.addEventListener("DOMContentLoaded", function () {
   <div class="mb-6 text-2xl font-bold">
     <div class="flex items-baseline justify-between">
       <div>
-        {% translate "Our <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent'>Services</span>" %}
+        {% translate "Recent <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent'>Posts</span'>" %}
       </div>
       <div class="text-sm">
-        <a href="/blog">{% translate "View all Services" %} →</a>
+        <a href="/blog">{% translate "View Blog" %} →</a>
       </div>
     </div>
   </div>
@@ -167,40 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </a>
       {% endwith %}
     {% endfor %}
-    <a href="/blog" class="justify-center text-center">{% translate "View All Services" %} →</a>
+    <a href="/blog" class="justify-center text-center">{% translate "View Blog" %} →</a>
   </div>
-  <div class="mx-auto max-w-screen-lg px-3 py-6">
-    <div class="mb-6 text-2xl font-bold">
-      <div class="flex items-baseline justify-between">
-        <div>
-          {% translate "Recent <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent'>Posts</span'>" %}
-        </div>
-        <div class="text-sm">
-          <a href="https://publii.resdigita.com">{% translate "View Blog" %} →</a>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-      {% for item in posts %}
-        <a class="hover:translate-y-1" href="{{ item.url }}">
-          <div class="overflow-hidden rounded-md bg-slate-800">
-            <div class="aspect-w-3 aspect-h-2">
-              <img src="{{ item.image }}" loading="lazy">
-            </div>
-            <div class="px-3 pt-4 pb-6 text-center">
-              <h2 class="text-xl font-semibold">{{ item.title }}</h2>
-              <div class="mt-1 text-xs text-gray-400">{{ item.date_modified }}</div>
-              <div class="mt-2 text-sm">{{ item.summary |richtext }}</div>
-              {% if item.tags %}
-                {% for tag in item.tags %}
-                  <div class="rounded-md px-2 py-1 text-xs font-semibold bg-lime-400 text-lime-900 tag-{{ tag }}">{{ tag }}</div>
-                {% endfor %}
-              {% endif %}
-            </div>
-          </div>
-        </a>
-      {% endfor %}
-      <a href="/blog" class="justify-center text-center">{% translate "View Blog" %} →</a>
-    </div>
-  </div>
+</div>
 {% endblock content %}

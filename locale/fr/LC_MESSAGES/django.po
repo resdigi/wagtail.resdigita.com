@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-12 16:45+0200\n"
+"POT-Creation-Date: 2025-04-21 12:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: blog/templates/blog/blog_page.html:14
+msgid "By"
+msgstr "Par"
+
+#: blog/templates/blog/blog_page.html:23
+msgid "on"
+msgstr "le"
+
+#: blog/templates/blog/blog_page.html:42
+msgid "Return to blog"
+msgstr "Retourner au blog"
+
+#: blog/templates/blog/blog_page.html:47
+msgid "Tags"
+msgstr "Etiquettes (tags)"
 
 #: eliasells/views.py:26
 msgid "localized_gpt_prompt"
@@ -37,7 +53,9 @@ msgstr ""
 
 #: resdigita/templates/includes/chat.html:6
 msgid "live_chat_title"
-msgstr "Discussion <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent'>en directe (Turing)</span>"
+msgstr ""
+"Discussion <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-"
+"text text-transparent'>en directe (Turing)</span>"
 
 #: resdigita/templates/includes/chat.html:12
 msgid "localized_chat_initial_message"
@@ -55,31 +73,17 @@ msgstr "Chatter ici (bla bla bla)"
 msgid "Send"
 msgstr "Envoyer"
 
-#: resdigita/templates/resdigita/page_home.html:97
+#: resdigita/templates/resdigita/page_home.html:92
 msgid "recent_projects_title"
-msgstr "Projets <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent'>récents</span'>"
+msgstr ""
+"Projets <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text "
+"text-transparent'>récents</span'>"
 
-#: resdigita/templates/resdigita/page_home.html:100
+#: resdigita/templates/resdigita/page_home.html:94
 msgid "View all Projects"
 msgstr "Voir tous les projets"
 
-#: resdigita/templates/resdigita/page_home.html:145
-msgid ""
-"Our <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text "
-"text-transparent'>Services</span>"
-msgstr ""
-"Nos <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text "
-"text-transparent'>services</span> pour vous"
-
-#: resdigita/templates/resdigita/page_home.html:148
-msgid "View all Services"
-msgstr "Voir tous les services"
-
-#: resdigita/templates/resdigita/page_home.html:174
-msgid "View All Services"
-msgstr "Voir tous les services"
-
-#: resdigita/templates/resdigita/page_home.html:180
+#: resdigita/templates/resdigita/page_home.html:139
 msgid ""
 "Recent <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text "
 "text-transparent'>Posts</span'>"
@@ -87,8 +91,8 @@ msgstr ""
 "Billets <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text "
 "text-transparent'>récents</span'>"
 
-#: resdigita/templates/resdigita/page_home.html:183
-#: resdigita/templates/resdigita/page_home.html:207
+#: resdigita/templates/resdigita/page_home.html:142
+#: resdigita/templates/resdigita/page_home.html:168
 msgid "View Blog"
 msgstr "Voir le blog"
 
@@ -1698,3 +1702,16 @@ msgid ""
 "Set the precision for numeric computations in the SASS processor. Default: "
 "settings.SASS_PRECISION."
 msgstr ""
+
+#~ msgid ""
+#~ "Our <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text "
+#~ "text-transparent'>Services</span>"
+#~ msgstr ""
+#~ "Nos <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text "
+#~ "text-transparent'>services</span> pour vous"
+
+#~ msgid "View all Services"
+#~ msgstr "Voir tous les services"
+
+#~ msgid "View All Services"
+#~ msgstr "Voir tous les services"

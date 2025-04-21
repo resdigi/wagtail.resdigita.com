@@ -8,14 +8,16 @@ from blog.models import BlogPage
 from project.models import ProjectPage
 # from base.models import NavigationSettings
 # from wagtail.contrib.settings.models import BaseGenericSetting
-from resdigita.services import get_blog_posts
+# from resdigita.services import get_blog_posts
+
+wagtail_resdigita_features=['h2', 'h3', 'h4', 'bold', 'italic', 'ol', 'ul', 'hr', 'link', 'document-link', 'image', 'embed', 'code', 'blockquote']
 
 class PageHome(Page):
     content = RichTextField(
         blank=True,
         max_length=255,
         help_text="Write an introduction for the site",
-        features=['h2', 'h3', 'h4', 'bold', 'italic', 'ol', 'ul', 'hr', 'link', 'document-link', 'image', 'embed', 'code', 'blockquote']
+        features=wagtail_resdigita_features,
     )
 
     hero_cta = models.CharField(
@@ -54,11 +56,5 @@ class PageHome(Page):
         
         context['blogpages'] = blogpages
         context['projectpages'] = projectpages
-
-        
-        context["posts"] = get_blog_posts(
-            {}
-        )
-
 
         return context
