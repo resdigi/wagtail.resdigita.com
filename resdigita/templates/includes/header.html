@@ -29,9 +29,12 @@
                         <li class="hover:text-white">
                             <a href="{% pageurl translation %}"
                                rel="alternate"
-                               hreflang="{{ translation.locale.language_code }}">{{ translation.locale.language_name_local }}</a>
+                               hreflang="{{ translation.locale.language_code }}">{{ translation.locale.language_code }}</a>
                         </li>
                     {% endfor %}
+                    <li class="hover:text-white border border-white rounded px-1">
+                        {{ LANGUAGE_CODE }}
+                    </li>
                 {% endif %}
             </ul>
         </nav>
