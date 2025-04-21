@@ -55,6 +55,11 @@ class BlogPage(Page):
     ]
 
     content_panels = Page.content_panels + [MultiFieldPanel(["date", FieldPanel("authors", widget=forms.CheckboxSelectMultiple), "tags"], heading="Blog information"), "intro", "body", "gallery_images"]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context["main_image"] = self.main_image()
+        return context
     
 
 class BlogPageGalleryImage(Orderable):
@@ -74,8 +79,12 @@ class BlogIndexPage(Page):
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
-        blogpages = self.get_children().live().order_by('-first_published_at')
-        context['blogpages'] = blogpages
+        blogpages = BlogPage.objects.live().order_by('-first_published_at')
+        context['blogpages'] = []
+        for blogpage in blogpages:
+            blogpage.main_image = blogpage.main_image()
+            # print(blogpage.main_image)
+            context['blogpages'].append(blogpage)
         return context
 
     content_panels = Page.content_panels + ["intro"]
