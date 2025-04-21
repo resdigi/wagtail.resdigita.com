@@ -1,5 +1,0 @@
-# media is for database-referenced media files
-*
-# Except this file
-!.gitignore
-!README.md

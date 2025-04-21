@@ -1,49 +1,57 @@
 {% extends "base.html" %}
-
-{% load wagtailcore_tags wagtailimages_tags %}
-
-{% block body_class %}template-blogpage{% endblock %}
-
+{% load static wagtailcore_tags wagtailimages_tags wagtailsettings_tags i18n %}
+{% block body_class %}template-blogpage bg-slate-900 text-gray-100{% endblock body_class %}
+{% block extra_css %}
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'resdigita/fonts/fonts.css' %}" />
+    <link rel="stylesheet" href="{% static 'blog/css/tailwind.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+{% endblock extra_css %}
 {% block content %}
-    <h1>{{ page.title }}</h1>
-    <p class="meta">{{ page.date }}</p>
+    <div class="mx-auto max-w-screen-lg px-3 py-6">
+        <h1 class="text-center text-3xl font-bold">{{ page.title }}</h1>
+        <div class="mt-2 text-center text-sm text-gray-400">
+            {% translate "By" %} <!-- -->{% with authors=page.authors.all %}
+            {% if authors %}
+                    {% for author in authors %}
 
-    {% with authors=page.authors.all %}
-        {% if authors %}
-            <h3>Posted by:</h3>
-            <ul>
-                {% for author in authors %}
-                    <li style="display: inline">
-                        {% image author.author_image fill-40x60 style="vertical-align: middle" %}
-                        {{ author.name }}
-                    </li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
+                            {{ author.name }}{% if not forloop.last %},{% endif %}
 
-    <div class="intro">{{ page.intro }}</div>
+                    {% endfor %}
 
-    {{ page.body|richtext }}
-
-    {% for item in page.gallery_images.all %}
-        <div style="float: inline-start; margin: 10px">
-            {% image item.image fill-320x240 %}
-            <p>{{ item.caption }}</p>
+            {% endif %}
+        {% endwith %}<!-- --> {% translate "on" %} <!-- --> <!-- -->{{ page.date }}
         </div>
-    {% endfor %}
-
-    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
-
-    {% with tags=page.tags.all %}
-        {% if tags %}
-            <div class="tags">
-                <h3>Tags</h3>
-                {% for tag in tags %}
-                    <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
-                {% endfor %}
+        <div class="mx-auto mt-5 max-w-prose">
+            <div class="aspect-w-3 aspect-h-2">
+                {% image main_image fill-900x300-c75 class="h-full w-full rounded-lg object-cover object-center" %}
             </div>
-        {% endif %}
-    {% endwith %}
-
-{% endblock %}
+            <div class="prose prose-invert mt-8 prose-img:rounded-lg">
+                <div class="intro italic text-lg text-center w-full">{{ page.intro }}</div>
+                {{ page.body|richtext }}
+                {% for item in page.gallery_images.all %}
+                <div style="float: inline-start; margin: 10px">
+                    {% image item.image fill-320x240 %}
+                    <p>{{ item.caption }}</p>
+                </div>
+                {% endfor %}
+                <p>
+                    <a href="{{ page.get_parent.url }}">{% translate "Return to blog" %}</a>
+                </p>
+                {% with tags=page.tags.all %}
+                {% if tags %}
+                    <div class="tags">
+                        <h2>{% translate "Tags" %}</h2>
+                        {% for tag in tags %}
+                            <a href="{% slugurl 'tags' %}?tag={{ tag }}">
+                                <button type="button">{{ tag }}</button>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

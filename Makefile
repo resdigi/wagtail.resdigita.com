@@ -109,12 +109,15 @@ tailwind-install:
 # From https://tailwindcss.com/docs/installation/tailwind-cli
 tailwind-compile:
 	make -C resdigita/tailwind compile
+	make -C blog/tailwind compile
 
 tailwind-compilemax:
 	make -C resdigita/tailwind compile
+	make -C blog/tailwind compile
 
 tailwind-watch:
 	make -C resdigita/tailwind watch
+	make -C blog/tailwind watch
 
 fixtures-dump-test-initial:
 	make -C fixtures dump-initial

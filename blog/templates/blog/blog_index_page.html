@@ -2,22 +2,37 @@
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% block body_class %}template-blogindexpage{% endblock %}
+{% block body_class %}template-blogindexpage bg-slate-900 text-gray-100{% endblock %}
 
 {% block content %}
-    <h1>{{ page.title }}</h1>
-
-    <div class="intro">{{ page.intro|richtext }}</div>
-
+<div class="mx-auto max-w-screen-lg px-3 py-6">
+    <div class="text-center">
+      <h1 class="text-3xl font-bold">{{ page.title }}</h1>
+      <div class="intro mt-3 text-gray-200">{{ page.intro|richtext }}</div>
+    </div>
+  </div>
+  <div class="mx-auto max-w-screen-lg px-3 py-6">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
     {% for post in blogpages %}
     {% with post=post.specific %}
-        <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
-        {% with post.main_image as main_image %}
-            {% if main_image %}{% image main_image fill-160x100 %}{% endif %}
-        {% endwith %}
-        <p>{{ post.intro }}</p>
-        {{ post.body|richtext }}
+    <a class="hover:translate-y-1"
+         href="{% pageurl post %}">
+        <div class="overflow-hidden rounded-md bg-slate-800">
+          <div class="aspect-w-3 aspect-h-2">
+            {% if main_image %}{% image main_image fill-160x100 class="h-full w-full object-cover object-center"%}{% endif %}
+          </div>
+          <div class="px-3 pt-4 pb-6 text-center">
+            <h2 class="text-xl font-semibold">{{ post.title }}</h2>
+            <div class="mt-1 text-xs text-gray-400">{{ post.date }}</div>
+            <div class="mt-2 text-sm">
+                {{ post.intro }}
+            </div>
+          </div>
+        </div>
+      </a>
     {% endwith %}
 {% endfor %}
+    </div>
+</div>
 
 {% endblock %}

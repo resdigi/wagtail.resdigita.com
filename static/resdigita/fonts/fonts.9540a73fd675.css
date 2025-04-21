@@ -1,0 +1,62 @@
+@font-face {
+    font-family: 'fengardo';
+    src: url("fengardo/fengardo-regular.dcd3786e3d81.woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'fengardo';
+    src: url("fengardo/fengardo-blackbeta.57fb1d732876.woff2");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'fengardo';
+    src: url("fengardo/fengardo-italic.74ad6fc9d494.woff2");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'grotesk';
+    src: url("grotesk/Grotesk-04Gras.514f91cc93d5.woff2") format('woff2'),
+        url("grotesk/Grotesk-04Gras.50e724c5875b.woff") format('woff');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'grotesk';
+    src: url("grotesk/Grotesk-03Regular.1f1bcbaccecd.woff2") format('woff2'),
+        url("grotesk/Grotesk-03Regular.d6a1916ef4a1.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'grotesk';
+    src: url("grotesk/Grotesk-04Gras.514f91cc93d5.woff2") format('woff2'),
+        url("grotesk/Grotesk-04Gras.50e724c5875b.woff") format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'grotesk';
+    src: url("grotesk/Grotesk-02Mince.cfccd76cf434.woff2") format('woff2'),
+        url("grotesk/Grotesk-02Mince.6905c45b4642.woff") format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'grotesk';
+    src: url("grotesk/Grotesk-01Extrafin.5f6b398f8fd3.woff2") format('woff2'),
+        url("grotesk/Grotesk-01Extrafin.8f639137eaa3.woff") format('woff');
+    font-weight: 200;
+    font-style: normal;
+}
