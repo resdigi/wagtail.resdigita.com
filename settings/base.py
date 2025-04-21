@@ -129,7 +129,14 @@ INSTALLED_APPS = [
     "search",
     'django.contrib.humanize',
     "sass_processor",
+    "grapple",
+    "graphene_django",
 ]
+
+GRAPHENE = {"SCHEMA": "grapple.schema.schema"}
+GRAPPLE = {
+    "APPS": ["resdigita", "blog", "project",],
+}
 
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",

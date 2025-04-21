@@ -10,11 +10,14 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
 
+from grapple import urls as grapple_urls
+
 urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("accounts/", include("allauth.urls")),
+    path("api/", include(grapple_urls)),
 ]
 
 
