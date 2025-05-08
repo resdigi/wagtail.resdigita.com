@@ -129,5 +129,4 @@ compilemessages:
 	./.venv/bin/python manage.py compilemessages
 
 makemessages:
-	./.venv/bin/python manage.py  makemessages -l en -l fr                                                                           
-
+	./.venv/bin/python manage.py  makemessages -l en -l fr

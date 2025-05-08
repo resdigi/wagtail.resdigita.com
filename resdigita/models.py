@@ -4,8 +4,8 @@ from wagtail.models import Page
 from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel
 
-from blog.models import BlogPage
-from project.models import ProjectPage
+from blog.models import BlogIndexPage, BlogPage
+from project.models import ProjectIndexPage, ProjectPage
 # from base.models import NavigationSettings
 # from wagtail.contrib.settings.models import BaseGenericSetting
 # from resdigita.services import get_blog_posts
@@ -13,10 +13,10 @@ from project.models import ProjectPage
 wagtail_resdigita_features=['h2', 'h3', 'h4', 'bold', 'italic', 'ol', 'ul', 'hr', 'link', 'document-link', 'image', 'embed', 'code', 'blockquote']
 
 class PageHome(Page):
+    intro = RichTextField(blank=True, max_length=255,features=['bold', 'italic','link','document-link'])
+
     content = RichTextField(
         blank=True,
-        max_length=255,
-        help_text="Write an introduction for the site",
         features=wagtail_resdigita_features,
     )
 
@@ -39,6 +39,7 @@ class PageHome(Page):
 
     content_panels = (
         FieldPanel("title", classname="full title"),
+        FieldPanel("intro"),
         FieldPanel("content"),
         FieldPanel("hero_cta"),
         FieldPanel("hero_cta_link"),
@@ -48,13 +49,10 @@ class PageHome(Page):
 
         context = super().get_context(request)
 
-        blogpages = BlogPage.objects.live().order_by('-first_published_at')
-        projectpages = ProjectPage.objects.live()
-        # navset = NavigationSettings.load(request_or_site=request)
-
-        # Update template context
-        
-        context['blogpages'] = blogpages
-        context['projectpages'] = projectpages
-
+        context['blogindexpages'] = self.get_children().specific().live().type(BlogIndexPage)
+        context['projectindexpages'] = self.get_children().specific().live().type(ProjectIndexPage)
+        for item in context['blogindexpages']:
+            item.blogpages = item.get_blog_pages()
+        for item in context['projectindexpages']:
+            item.projectpages = item.get_children().live().type(ProjectPage)
         return context

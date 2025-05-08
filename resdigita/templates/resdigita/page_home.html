@@ -8,7 +8,7 @@
 {% block extra_js %}
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
-document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
     const chatBox = document.getElementById("chat-box");
     const chatInput = document.getElementById("chat-input");
     const sendBtn = document.getElementById("send-btn");
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="flex flex-col items-center md:flex-row md:justify-between md:gap-x-24">
       <div>
         <h1 class="text-3xl font-bold">{{ self.title }}</h1>
-        <p class="mt-6 text-xl leading-9">{{ self.content|richtext }}</p>
+        <p class="mt-6 text-xl leading-9">{{ self.intro|richtext }}</p>
         {% include "includes/socialmedia.html" %}
       </div>
       <div class="shrink-0">
@@ -82,65 +82,65 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     </div>
   </div>
-  {% include "includes/chat.html" %}
   <div class="mx-auto max-w-screen-lg px-3 py-6">
-    <div class="mb-6 text-2xl font-bold">
-      <div class="flex items-baseline justify-between">
-        <div>{% translate "recent_projects_title" %}</div>
-        <div class="text-sm">
-          <a href="/projects">{% translate "View all Projects" %} →</a>
-        </div>
+    <p class="mt-6 text-xl leading-9">{{ self.content|richtext }}</p>
+  </div>
+  {% include "includes/chat.html" %}
+  {% for projectindex in projectindexpages %}
+  {% with projectindex=projectindex.specific %}
+    <div class="decorative_title">
+      <h2>{{ projectindex.decorative_title|richtext }}</h2>
+      <div>
+        <a href="{% pageurl projectindex %}">{{ projectindex.cta }}</a>
       </div>
     </div>
-  </div>
-  <div class="flex flex-col gap-6">
-    {% for item in projectpages %}
-      {% with item=item.specific %}
-        <div class="flex flex-col items-center gap-x-8 rounded-md bg-slate-800 p-3 md:flex-row">
-          <div class="shrink-0">
-            <a href="{% pageurl item %}">{% image item.image fill-160x160 class="h-36 w-36 hover:translate-y-1" %}</a>
-          </div>
-          <div>
-            <div class="flex flex-col items-center gap-y-2 md:flex-row">
-              <a class="hover:text-cyan-400" href="{% pageurl item %}">
-                <div class="text-xl font-semibold">{{ item.title }}</div>
-              </a>
-              <div class="ml-3 flex gap-2">
-                {% with tags=item.tags.all %}
-                  {% if tags %}
-                    {% for tag in tags %}
-                      <div class="rounded-md px-2 py-1 text-xs font-semibold bg-lime-400 text-lime-900 tag-{{ tag.slug }}">{{ tag }}</div>
-                    {% endfor %}
-                  {% endif %}
-                {% endwith %}
-                {% comment %}
-                  <div class="rounded-md px-2 py-1 text-xs font-semibold bg-fuchsia-400 text-fuchsia-900">Astro.js</div>
-                  <div class="rounded-md px-2 py-1 text-xs font-semibold bg-lime-400 text-lime-900">Web design</div>
-                  <div class="rounded-md px-2 py-1 text-xs font-semibold bg-sky-400 text-sky-900">Tailwind.css</div>
-                  <div class="rounded-md px-2 py-1 text-xs font-semibold bg-rose-400 text-rose-900">TypeScript</div>
-                {% endcomment %}
-              </div>
+    <div class="flex flex-col gap-6">
+      {% for item in projectindex.projectpages.specific %}
+        {% with item=item.specific %}
+          <div class="flex flex-col items-center gap-x-8 rounded-md bg-slate-800 p-3 md:flex-row">
+            <div class="shrink-0">
+              <a href="{% pageurl item %}">{% image item.image fill-160x160 class="h-36 w-36 hover:translate-y-1" %}</a>
             </div>
-            <p class="mt-3 text-gray-400">{{ item.intro }}</p>
+            <div>
+              <div class="flex flex-col items-center gap-y-2 md:flex-row">
+                <a class="hover:text-cyan-400" href="{% pageurl item %}">
+                  <div class="text-xl font-semibold">{{ item.title }}</div>
+                </a>
+                <div class="ml-3 flex gap-2">
+                  {% with tags=item.tags.all %}
+                    {% if tags %}
+                      {% for tag in tags %}
+                        <div class="rounded-md px-2 py-1 text-xs font-semibold bg-lime-400 text-lime-900 tag-{{ tag.slug }}">{{ tag }}</div>
+                      {% endfor %}
+                    {% endif %}
+                  {% endwith %}
+                  {% comment %}
+              <div class="rounded-md px-2 py-1 text-xs font-semibold bg-fuchsia-400 text-fuchsia-900">Astro.js</div>
+              <div class="rounded-md px-2 py-1 text-xs font-semibold bg-lime-400 text-lime-900">Web design</div>
+              <div class="rounded-md px-2 py-1 text-xs font-semibold bg-sky-400 text-sky-900">Tailwind.css</div>
+              <div class="rounded-md px-2 py-1 text-xs font-semibold bg-rose-400 text-rose-900">TypeScript</div>
+                  {% endcomment %}
+                </div>
+              </div>
+              <p class="mt-3 text-gray-400">{{ item.intro }}</p>
+            </div>
           </div>
-        </div>
-      {% endwith %}
-    {% endfor %}
-  </div>
+        {% endwith %}
+      {% endfor %}
+    </div>
+  {% endwith %}
+  {% endfor %}
 </div>
-<div class="mx-auto max-w-screen-lg px-3 py-6">
-  <div class="mb-6 text-2xl font-bold">
-    <div class="flex items-baseline justify-between">
-      <div>
-        {% translate "Recent <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent'>Posts</span'>" %}
-      </div>
-      <div class="text-sm">
-        <a href="/blog">{% translate "View Blog" %} →</a>
-      </div>
+{% for blogindex in blogindexpages %}
+{% with blogindex=blogindex.specific %}
+  <div class="decorative_title">
+    <h2>{{ blogindex.decorative_title|richtext }}</h2>
+    <div>
+      <a href="{% pageurl blogindex %}">{{ blogindex.cta }}</a>
     </div>
   </div>
   <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-    {% for item in blogpages %}
+    {% for item in blogindex.blogpages %}
       {% with item=item.specific %}
         <a class="hover:translate-y-1" href="{% pageurl item %}">
           <div class="overflow-hidden rounded-md bg-slate-800">
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </a>
       {% endwith %}
     {% endfor %}
-    <a href="/blog" class="justify-center text-center">{% translate "View Blog" %} →</a>
   </div>
-</div>
+{% endwith %}
+{% endfor %}
 {% endblock content %}

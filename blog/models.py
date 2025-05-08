@@ -11,6 +11,9 @@ from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
+import re
+
+wagtail_resdigita_features=['h2', 'h3', 'h4', 'bold', 'italic', 'ol', 'ul', 'hr', 'link', 'document-link', 'image', 'embed', 'code', 'blockquote']
 
 @register_snippet
 class Author(models.Model):
@@ -54,7 +57,8 @@ class BlogPage(Page):
         index.SearchField('body'),
     ]
 
-    content_panels = Page.content_panels + [MultiFieldPanel(["date", FieldPanel("authors", widget=forms.CheckboxSelectMultiple), "tags"], heading="Blog information"), "intro", "body", "gallery_images"]
+    content_panels = Page.content_panels + [
+        MultiFieldPanel(["date", FieldPanel("authors", widget=forms.CheckboxSelectMultiple), "tags"], heading="Blog information"), "intro", "body", "gallery_images"]
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
@@ -73,21 +77,28 @@ class BlogPageGalleryImage(Orderable):
 
 
 class BlogIndexPage(Page):
+    decorative_title = RichTextField(
+        blank=True,
+        features=['bold'],
+    )
+    cta = models.CharField(max_length=128,blank=True)
+
     intro = RichTextField(blank=True)
 
-    # add the get_context method:
+    content_panels = Page.content_panels + ["decorative_title", "intro", "cta"]
+
+
+    def get_blog_pages(self):
+        return self.get_children().specific().live().public().type(BlogPage).order_by('-first_published_at')
+
     def get_context(self, request):
-        # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
-        blogpages = BlogPage.objects.live().order_by('-first_published_at')
-        context['blogpages'] = []
-        for blogpage in blogpages:
+        context["page"].decorative_title = re.sub(r'^<p[^>]*>(.*?)</p>$', r'\1', context["page"].decorative_title, flags=re.DOTALL)
+        context['page'].blogpages = self.get_blog_pages()
+        for blogpage in context['page'].blogpages.specific():
             blogpage.main_image = blogpage.main_image()
-            # print(blogpage.main_image)
-            context['blogpages'].append(blogpage)
         return context
 
-    content_panels = Page.content_panels + ["intro"]
 
 
 
@@ -98,8 +109,9 @@ class BlogTagIndexPage(Page):
         # Filter by tag
         tag = request.GET.get('tag')
         blogpages = BlogPage.objects.filter(tags__name=tag)
-
         # Update template context
         context = super().get_context(request)
         context['blogpages'] = blogpages
+        if ("%s" % context['decorative_title']) == "":
+            context['decorative_title'] = context['title']
         return context
