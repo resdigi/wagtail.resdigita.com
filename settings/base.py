@@ -129,7 +129,14 @@ INSTALLED_APPS = [
     "search",
     'django.contrib.humanize',
     "sass_processor",
+    "grapple",
+    "graphene_django",
 ]
+
+GRAPHENE = {"SCHEMA": "grapple.schema.schema"}
+GRAPPLE = {
+    "APPS": ["resdigita", "blog", "project",],
+}
 
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -264,7 +271,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATICFILES_FINDERS = [
-    "django.contrib.staticfiles.finders.FileSystemFinder",
+    # "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
     'sass_processor.finders.CssFinder',
 ]
@@ -273,7 +280,7 @@ SASS_PROCESSOR_AUTO_INCLUDE = True
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "resdigita/static"),
-    os.path.join(BASE_DIR, "staticfiles"),
+    # os.path.join(BASE_DIR, "staticfiles"),
 ]
 
 LOCALE_PATHS = [

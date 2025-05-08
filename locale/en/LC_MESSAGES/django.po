@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-12 16:45+0200\n"
+"POT-Creation-Date: 2025-04-21 12:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: blog/templates/blog/blog_page.html:14
+msgid "By"
+msgstr ""
+
+#: blog/templates/blog/blog_page.html:23
+msgid "on"
+msgstr ""
+
+#: blog/templates/blog/blog_page.html:42
+msgid "Return to blog"
+msgstr ""
+
+#: blog/templates/blog/blog_page.html:47
+msgid "Tags"
+msgstr ""
 
 #: eliasells/views.py:26
 msgid "localized_gpt_prompt"
@@ -46,7 +62,9 @@ msgstr ""
 
 #: resdigita/templates/includes/chat.html:6
 msgid "live_chat_title"
-msgstr "Live <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent'>Chat</span>"
+msgstr ""
+"Live <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text "
+"text-transparent'>Chat</span>"
 
 #: resdigita/templates/includes/chat.html:12
 msgid "localized_chat_initial_message"
@@ -65,36 +83,24 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: resdigita/templates/resdigita/page_home.html:97
+#: resdigita/templates/resdigita/page_home.html:92
 msgid "recent_projects_title"
-msgstr "Recent <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent'>Projects</span>"
+msgstr ""
+"Recent <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text "
+"text-transparent'>Projects</span>"
 
-#: resdigita/templates/resdigita/page_home.html:100
+#: resdigita/templates/resdigita/page_home.html:94
 msgid "View all Projects"
 msgstr ""
 
-#: resdigita/templates/resdigita/page_home.html:145
-msgid ""
-"Our <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text "
-"text-transparent'>Services</span>"
-msgstr ""
-
-#: resdigita/templates/resdigita/page_home.html:148
-msgid "View all Services"
-msgstr ""
-
-#: resdigita/templates/resdigita/page_home.html:174
-msgid "View All Services"
-msgstr ""
-
-#: resdigita/templates/resdigita/page_home.html:180
+#: resdigita/templates/resdigita/page_home.html:139
 msgid ""
 "Recent <span class='bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text "
 "text-transparent'>Posts</span'>"
 msgstr ""
 
-#: resdigita/templates/resdigita/page_home.html:183
-#: resdigita/templates/resdigita/page_home.html:207
+#: resdigita/templates/resdigita/page_home.html:142
+#: resdigita/templates/resdigita/page_home.html:168
 msgid "View Blog"
 msgstr ""
 

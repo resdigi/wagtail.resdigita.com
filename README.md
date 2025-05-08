@@ -38,3 +38,7 @@ Here is our documentation
 | Username | Password |
 | ---  | --- |
 | admin | password |
+
+## Colophon
+
+<https://creativedesignsguru.com/demo/astro-boilerplate/>
