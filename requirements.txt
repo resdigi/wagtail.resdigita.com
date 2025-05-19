@@ -67,5 +67,17 @@ wagtail==6.4
 wagtail-modeladmin==2.1.0
 wagtailmenus==4.0.2
 Willow==1.9.0
+<<<<<<< HEAD
 xxhash==3.5.0
 zstandard==0.23.0
+=======
+wagtail-grapple
+graphene-django
+dj-database-url
+dotenv
+django-allauth
+django-sass-processor
+django-debug-toolbar
+cryptography
+pyjwt
+>>>>>>> 3f13c1d (Missing requirements)
