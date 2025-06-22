@@ -4,7 +4,7 @@ Wagtail Website for ResDigita.com
 
 <https://github.com/resdigi/wagtail.resdigita.com>
 
-## [0.1.1] - 205-03-19
+## [0.1.1] - 2025-03-19
 
 - Documentation updates
 - IMPORTANT: HOST_URL in .env file becomes HOST_NAME
