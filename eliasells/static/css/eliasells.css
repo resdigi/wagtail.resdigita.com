@@ -1,0 +1,9 @@
+/* calendar.css */
+table.month {
+    margin: 20px;
+}
+
+table.month td,
+table.month th {
+    padding: 5px;
+}

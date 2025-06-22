@@ -8,13 +8,26 @@ import json
 from django.conf import settings
 from django.utils import translation
 
-from .graph import app
+from .graph import chatbotapp
 from langchain_core.messages import HumanMessage
 
+import calendar
+
+from django.shortcuts import render
+from django.utils import timezone
+
+
+def index(request):
+    current_year = timezone.now().year
+    calendar_html = calendar.HTMLCalendar().formatyear(current_year)
+
+    return render(request, 'eliasells/index.html', {
+        'current_year': current_year,
+        'calendar_html': calendar_html,
+    })
 
 # Configure a specific logger for OpenAI API calls
 openai_logger = logging.getLogger("openai_logger")
-
 
 
 @csrf_exempt
@@ -23,32 +36,6 @@ def chat_view(request):
         try:
             data = json.loads(request.body)
             user_message = data.get("message", "")
-
-            # Langchain implementation of chatbot
-
-            # model = ChatOpenAI(model="gpt-4o-mini")
-            # trimmer = trim_messages(
-            #     max_tokens=65,
-            #     strategy="last",
-            #     token_counter=model,
-            #     include_system=True,
-            #     allow_partial=False,
-            #     start_on="human",
-            # )
-
-            # openai.api_key = settings.OPENAI_API_KEY
-
-            # prompt = str(_("localized_gpt_prompt"))
-
-            # openai_logger.info(f"Sending prompt to OpenAI: {prompt}")
-
-            # client = OpenAI()
-
-            # response = client.responses.create(
-            #     model="gpt-4o",
-            #     instructions=prompt,
-            #     input=user_message
-            # )
 
             # Managing chat thread id through session
             if "thread_id" not in request.session:
@@ -64,10 +51,8 @@ def chat_view(request):
 
             language = translation.get_language()
 
-            output = app.invoke({"messages": input_messages}, config)
+            output = chatbotapp.invoke({"messages": input_messages}, config)
             reply = output["messages"][-1].content
-
-            # chat_response = response.output_text
 
             # Log only OpenAI response
             openai_logger.info(f"Received response from OpenAI: {reply}")

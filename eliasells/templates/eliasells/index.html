@@ -1,0 +1,17 @@
+{% extends "wagtailadmin/base.html" %}
+{% load static %}
+
+{% block titletag %}{{ current_year }} calendar{% endblock %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/eliasells.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% include "wagtailadmin/shared/header.html" with title="Calendar" icon="date" %}
+
+    <div class="nice-padding">
+        {{ calendar_html|safe }}
+    </div>
+{% endblock %}
