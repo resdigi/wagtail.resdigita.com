@@ -11,6 +11,20 @@ from django.utils import translation
 from .graph import chatbotapp
 from langchain_core.messages import HumanMessage
 
+import calendar
+
+from django.shortcuts import render
+from django.utils import timezone
+
+
+def index(request):
+    current_year = timezone.now().year
+    calendar_html = calendar.HTMLCalendar().formatyear(current_year)
+
+    return render(request, 'eliasells/index.html', {
+        'current_year': current_year,
+        'calendar_html': calendar_html,
+    })
 
 # Configure a specific logger for OpenAI API calls
 openai_logger = logging.getLogger("openai_logger")
