@@ -32,12 +32,13 @@ prompt_template = ChatPromptTemplate.from_messages([
 ])
 
 trimmer = trim_messages(
-    max_tokens=65,
+    max_tokens=5000,
     strategy="last",
     token_counter=model,
     include_system=True,
     allow_partial=False,
     start_on="human",
+    end_on=("human", "tool"),
 )
 
 def call_model(state: MessagesState):
@@ -50,12 +51,10 @@ def call_model(state: MessagesState):
     return {"messages": response}
 
 # Build LangGraph
-# Define a new graph
 workflow = StateGraph(state_schema=MessagesState)
-# Define the (single) node in the graph
 workflow.add_edge(START, "model")
 workflow.add_node("model", call_model)
 
 # Add memory
 memory = MemorySaver()
-app = workflow.compile(checkpointer=memory)
+chatbotapp = workflow.compile(checkpointer=memory)
