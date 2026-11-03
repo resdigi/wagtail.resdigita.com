@@ -28,6 +28,13 @@ if settings.DEBUG:
     # Serve static and media files from development server
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Django Debug Toolbar: only import/register its URLs when the toolbar is
+# actually enabled. Kept in sync with the INSTALLED_APPS/MIDDLEWARE gate in
+# settings/base.py (DEBUG_TOOLBAR) — gating on settings.DEBUG alone would import
+# debug_toolbar.toolbar (and its HistoryEntry model) while the app is not
+# installed, raising a RuntimeError.
+if getattr(settings, "DEBUG_TOOLBAR", False):
     from debug_toolbar.toolbar import debug_toolbar_urls
     urlpatterns += debug_toolbar_urls()
 
