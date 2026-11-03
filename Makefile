@@ -37,6 +37,21 @@ endif
 	echo "source ./venv/bin/activate"
 	$(EXEC_CMD) python -m venv $(PROJECT_PATH).venv
 
+requirements:
+	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/pip install --upgrade pip
+	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/pip install -r $(PROJECT_PATH)/requirements.txt
+	make -C ./resdigita requirements
+
+
+makemigrations:
+	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python ./manage.py makemigrations
+
+migrate:
+	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python ./manage.py migrate
+
+superuser:
+	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python manage.py createsuperuser --username admin --email admin@resdigita.com
+
 messages:
 	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python manage.py makemessages -l fr -l en 
 
@@ -59,20 +74,6 @@ endif
 	make migrate
 	make superuser
 	make -C $(PROJECT_PATH)/resdigita init
-
-requirements:
-	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/pip install --upgrade pip
-	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/pip install -r $(PROJECT_PATH)/requirements.txt
-	make -C ./resdigita requirements
-
-superuser:
-	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python manage.py createsuperuser --username admin --email admin@resdigita.com
-
-makemigrations:
-	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python ./manage.py makemigrations
-
-migrate:
-	$(EXEC_CMD) $(PROJECT_PATH).venv/bin/python ./manage.py migrate
 
 produpdate:
 	make collectstatic

@@ -11,7 +11,6 @@ Here are additional resources on this project:
 - <https://task.lesgrandsvoisins.com/projects/62>
 - <https://mark.lesgrandsvoisins.com/resdigita>
 
-
 ## Documentation
 
 Here is our documentation
