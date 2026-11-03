@@ -16,6 +16,7 @@ Here are additional resources on this project:
 Here is our documentation
 
   - [Installation](./doc/installation.md)
+  - [Development environment (Nix flake, justfile)](./doc/environment.md)
   - [Fixtures (mainly initial data for now)](./doc/fixtures.md)
   - [Git (tips on our usage)](./doc/git.md)
   - [CHANGELOG](./CHANGELOG.md)

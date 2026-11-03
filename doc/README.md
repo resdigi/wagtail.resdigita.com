@@ -3,6 +3,7 @@
 This has the documentation for wagtail.resdigita.com. See [../README.md](../README.md) for a more concise introduction.
 
   - [Installation](./installation.md)
+  - [Development environment (Nix flake, justfile)](./environment.md)
   - [Fixtures (mainly initial data for now)](./fixtures.md)
   - [Git (tips on our usage)](./git.md)
   - [CHANGELOG](../CHANGELOG.md)

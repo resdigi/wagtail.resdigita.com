@@ -4,6 +4,12 @@ Wagtail Website for ResDigita.com
 
 <https://github.com/resdigi/wagtail.resdigita.com>
 
+## [Unreleased]
+
+- Development environment: added a Nix flake (`flake.nix`, `flake.lock`) that provisions a Python 3.11 shell with the native build toolchain (Rust/maturin, cmake, image libs, nodejs, gettext) and auto-installs the pinned requirements into `.venv`.
+- Added `.justfile`, a modern task runner equivalent to the Makefile (which is kept for compatibility).
+- Fixed Django Debug Toolbar `HistoryEntry` `RuntimeError`: `settings/urls.py` now gates the toolbar import on the same `DEBUG_TOOLBAR` toggle as `settings/base.py`.
+
 ## [0.1.1] - 205-03-19
 
 - Documentation updates
