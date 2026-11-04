@@ -5,7 +5,7 @@
 
 
 <div class="mx-auto max-w-screen-lg px-3 py-6">
-    {% comment %} 
+    {% comment %}
   <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
     <div class="sm:w-7/12">
       <div class="text-3xl font-bold">
@@ -28,33 +28,29 @@
     </div>
   </div>
   {% endcomment %}
-  
-</div> 
+
+</div>
 
 
 
  <div class="mx-auto max-w-screen-lg px-3 py-6">
   <div class="border-t border-gray-600 pt-5 flex justify-between">
     <div class="text-sm text-gray-200">
-        {% get_footer_text %}
+        {% get_footer_text %}<br/>
+        <a class="text-cyan-400 hover:underline" href="{% url 'wagtailadmin_home' %}" rel="noopener noreferrer">Admin</a>
     </div>
     <div class="text-sm text-gray-200 flex items-center gap-4">
-        {% comment %} 
-      © Copyright <!-- -->2022<!-- --> by <!-- -->Astro boilerplate<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline"
-    href="https://creativedesignsguru.com"
-    target="_blank"
-    rel="noopener noreferrer">CreativeDesignsGuru</a>.
-    {% endcomment %}
+
+
          {# Add footer_text: #}
     {% include "includes/socialmedia.html" %}
-    <a class="text-cyan-400 hover:underline" href="{% url 'wagtailadmin_home' %}" rel="noopener noreferrer">Administration</a>
-    
+
     </div>
   </div>
-</div> 
+</div>
 
-{% comment %} 
+{% comment %}
 <footer>
-    <p>Built with Wagtail</p> 
+    <p>Built with Wagtail</p>
 </footer>
 {% endcomment %}
