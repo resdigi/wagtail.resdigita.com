@@ -355,12 +355,12 @@ _llm_providers = {
     'openai': {
         'api_key': os.getenv('OPENAI_API_KEY'),
         'base_url': os.getenv('OPENAI_BASE_URL'),  # None -> official OpenAI endpoint
-        'model': 'gpt-4o-mini',
+        'model': os.getenv('OPENAI_MODEL', 'gpt-4o-mini'),
     },
     'inception': {
         'api_key': os.getenv('INCEPTION_API_KEY'),
         'base_url': os.getenv('INCEPTION_BASE_URL'),
-        'model': 'mercury-3',
+        'model': os.getenv('INCEPTION_MODEL', 'mercury-3'),
     },
 }
 
