@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data.response) {
                     appendMessage("Bot", data.response);
                 } else {
-                    appendMessage("Bot", "Oops! Something went wrong.");
+                    appendMessage("Bot", data.error ? "Error: " + data.error : "Oops! Something went wrong.");
                 }
             })
             .catch(error => {

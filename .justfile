@@ -76,6 +76,11 @@ runserver:
 
 start: runserver
 
+# Check the chat/LLM configuration: print the active provider (OpenAI vs
+# Inception) and make a small live test call through the chat pipeline.
+chat-check:
+    {{ venv_py }} scripts/chat_check.py
+
 # --- Tailwind ----------------------------------------------------------------
 
 # Download the standalone tailwind binary into the venv (Linux x86-64).

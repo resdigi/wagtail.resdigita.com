@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.utils import translation
 from django.utils.translation import gettext_lazy as _
-from langchain_core.messages import HumanMessage, AIMessage
+from langchain_core.messages import HumanMessage, AIMessage, BaseMessage
 from langgraph.graph.message import add_messages, MessageGraph
 from langgraph.graph import START, MessagesState, StateGraph
 from langchain_core.messages import trim_messages
@@ -20,6 +20,20 @@ language = translation.get_language()
 class State(TypedDict):
     messages: Annotated[Sequence, add_messages]
     language: str
+
+def _count_tokens(messages: Sequence[BaseMessage]) -> int:
+    """Rough token estimator for trimming, independent of any provider.
+
+    tiktoken (langchain's default token counter) only knows OpenAI model
+    names, so it fails for non-OpenAI models like Inception's mercury-3.
+    A ~4-characters-per-token estimate is good enough for trimming.
+    """
+    total = 0
+    for message in messages:
+        content = message.content
+        text = content if isinstance(content, str) else str(content)
+        total += max(1, len(text) // 4)
+    return total
 
 model = ChatOpenAI(
     streaming=True,
@@ -40,7 +54,7 @@ prompt_template = ChatPromptTemplate.from_messages([
 trimmer = trim_messages(
     max_tokens=5000,
     strategy="last",
-    token_counter=model,
+    token_counter=_count_tokens,
     include_system=True,
     allow_partial=False,
     start_on="human",

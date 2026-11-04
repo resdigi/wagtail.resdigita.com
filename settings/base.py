@@ -341,15 +341,44 @@ WAGTAILADMIN_BASE_URL = "http://example.com"
 WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
 
 # LLM provider configuration.
-# The chat app (eliasells) uses the OpenAI SDK via langchain. It can be
-# pointed at any OpenAI-compatible API by overriding the base URL, API key,
-# and model. Inception's endpoint/token can be supplied via the INCEPTION_*
-# variables; OPENAI_* remain the fallback.
+# The chat app (eliasells) uses the OpenAI SDK via langchain, so any provider
+# here must expose an OpenAI-compatible API.
+#
+# Each provider has its own key/base URL/model block in .env. Select which one
+# is active with LLM_PROVIDER ("openai" or "inception"). When LLM_PROVIDER is
+# unset, the behaviour is backward-compatible: Inception is used if
+# INCEPTION_API_KEY is set, otherwise OpenAI. A global LLM_MODEL always wins
+# over the provider's default model.
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
-LLM_API_KEY = os.getenv('INCEPTION_API_KEY') or os.getenv('OPENAI_API_KEY')
-LLM_BASE_URL = os.getenv('INCEPTION_BASE_URL') or os.getenv('OPENAI_BASE_URL')
-LLM_MODEL = os.getenv('LLM_MODEL', 'gpt-4o-mini')
+_llm_providers = {
+    'openai': {
+        'api_key': os.getenv('OPENAI_API_KEY'),
+        'base_url': os.getenv('OPENAI_BASE_URL'),  # None -> official OpenAI endpoint
+        'model': 'gpt-4o-mini',
+    },
+    'inception': {
+        'api_key': os.getenv('INCEPTION_API_KEY'),
+        'base_url': os.getenv('INCEPTION_BASE_URL'),
+        'model': 'mercury-3',
+    },
+}
+
+_llm_provider = os.getenv('LLM_PROVIDER', '').strip().lower()
+if _llm_provider:
+    if _llm_provider not in _llm_providers:
+        raise ValueError(
+            f"Unknown LLM_PROVIDER: {_llm_provider!r} "
+            "(expected 'openai' or 'inception')"
+        )
+    _llm_cfg = _llm_providers[_llm_provider]
+else:
+    # Backward-compatible default.
+    _llm_cfg = _llm_providers['inception'] if os.getenv('INCEPTION_API_KEY') else _llm_providers['openai']
+
+LLM_API_KEY = _llm_cfg['api_key']
+LLM_BASE_URL = _llm_cfg['base_url']
+LLM_MODEL = os.getenv('LLM_MODEL') or _llm_cfg['model']
 
 # Logging
 LOGGING = {

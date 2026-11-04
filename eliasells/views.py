@@ -62,10 +62,10 @@ def chat_view(request):
         # In the exception handling part
         except OpenAIError as e:
             openai_logger.error(f"OpenAI API error: {e}")
-            return JsonResponse({"error": "OpenAI API issue"}, status=500)
+            return JsonResponse({"error": f"OpenAI API issue: {e}"}, status=500)
 
         except Exception as e:
             openai_logger.exception(f"Unexpected error: {e}")
-            return JsonResponse({"error": "Internal server error"}, status=500)
+            return JsonResponse({"error": f"Internal server error: {e}"}, status=500)
 
     return JsonResponse({"error": "Invalid request method"}, status=405)

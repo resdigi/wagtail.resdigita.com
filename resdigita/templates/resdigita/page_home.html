@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const botHtml = marked.parse(data.response);
                     appendMessage("Bot", botHtml);
                 } else {
-                    appendMessage("Bot", "Oops! Something went wrong.");
+                    appendMessage("Bot", data.error ? "Error: " + data.error : "Oops! Something went wrong.");
                 }
             })
             .catch(error => {
