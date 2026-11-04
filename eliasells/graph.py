@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.utils import translation
 from django.utils.translation import gettext_lazy as _
 from langchain_core.messages import HumanMessage, AIMessage
@@ -20,7 +21,12 @@ class State(TypedDict):
     messages: Annotated[Sequence, add_messages]
     language: str
 
-model = ChatOpenAI(streaming=True)
+model = ChatOpenAI(
+    streaming=True,
+    model=settings.LLM_MODEL,
+    api_key=settings.LLM_API_KEY,
+    base_url=settings.LLM_BASE_URL,
+)
 
 language = translation.get_language()
 

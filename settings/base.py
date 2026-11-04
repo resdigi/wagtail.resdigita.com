@@ -340,8 +340,16 @@ WAGTAILADMIN_BASE_URL = "http://example.com"
 # see https://docs.wagtail.org/en/stable/advanced_topics/deploying.html#user-uploaded-files
 WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
 
-# Open AI key
+# LLM provider configuration.
+# The chat app (eliasells) uses the OpenAI SDK via langchain. It can be
+# pointed at any OpenAI-compatible API by overriding the base URL, API key,
+# and model. Inception's endpoint/token can be supplied via the INCEPTION_*
+# variables; OPENAI_* remain the fallback.
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+
+LLM_API_KEY = os.getenv('INCEPTION_API_KEY') or os.getenv('OPENAI_API_KEY')
+LLM_BASE_URL = os.getenv('INCEPTION_BASE_URL') or os.getenv('OPENAI_BASE_URL')
+LLM_MODEL = os.getenv('LLM_MODEL', 'gpt-4o-mini')
 
 # Logging
 LOGGING = {
