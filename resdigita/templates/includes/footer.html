@@ -38,7 +38,7 @@
     <div class="text-sm text-gray-200">
         {% get_footer_text %}
     </div>
-    <div class="text-sm text-gray-200">
+    <div class="text-sm text-gray-200 flex items-center gap-4">
         {% comment %} 
       © Copyright <!-- -->2022<!-- --> by <!-- -->Astro boilerplate<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline"
     href="https://creativedesignsguru.com"
@@ -47,6 +47,7 @@
     {% endcomment %}
          {# Add footer_text: #}
     {% include "includes/socialmedia.html" %}
+    <a class="text-cyan-400 hover:underline" href="{% url 'wagtailadmin_home' %}" rel="noopener noreferrer">Administration</a>
     
     </div>
   </div>
